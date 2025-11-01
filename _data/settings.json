@@ -1,0 +1,52 @@
+[
+  {
+    "_id": "69065581aa151802e6531e2a",
+    "user": "69065581aa151802e6531e28",
+    "defaultCurrency": "EUR",
+    "firstDayOfMonth": 1,
+    "locale": "en-US",
+    "showDeletedMedia": false,
+    "createdAt": "2025-11-01T18:46:25.397Z",
+    "updatedAt": "2025-11-01T18:46:25.397Z"
+  },
+  {
+    "_id": "69065588aa151802e6531e2e",
+    "user": "69065588aa151802e6531e2c",
+    "defaultCurrency": "EUR",
+    "firstDayOfMonth": 1,
+    "locale": "en-US",
+    "showDeletedMedia": false,
+    "createdAt": "2025-11-01T18:46:32.445Z",
+    "updatedAt": "2025-11-01T18:46:32.445Z"
+  },
+  {
+    "_id": "6906558eaa151802e6531e32",
+    "user": "6906558eaa151802e6531e30",
+    "defaultCurrency": "EUR",
+    "firstDayOfMonth": 1,
+    "locale": "en-US",
+    "showDeletedMedia": false,
+    "createdAt": "2025-11-01T18:46:38.908Z",
+    "updatedAt": "2025-11-01T18:46:38.908Z"
+  },
+  {
+    "_id": "69065595aa151802e6531e36",
+    "user": "69065595aa151802e6531e34",
+    "defaultCurrency": "EUR",
+    "firstDayOfMonth": 1,
+    "locale": "en-US",
+    "showDeletedMedia": false,
+    "createdAt": "2025-11-01T18:46:45.182Z",
+    "updatedAt": "2025-11-01T18:46:45.182Z"
+  },
+  {
+    "_id": "6906559baa151802e6531e3a",
+    "user": "6906559baa151802e6531e38",
+    "defaultCurrency": "EUR",
+    "firstDayOfMonth": 1,
+    "locale": "en-US",
+    "showDeletedMedia": false,
+    "createdAt": "2025-11-01T18:46:51.146Z",
+    "updatedAt": "2025-11-01T18:46:51.146Z"
+  }
+]
