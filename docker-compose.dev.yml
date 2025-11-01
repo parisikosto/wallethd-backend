@@ -1,0 +1,40 @@
+services:
+  dev-api:
+    container_name: wallethd-backend-dev-api
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 5001:5001
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    depends_on:
+      - dev-mongodb
+  dev-mongodb:
+    container_name: wallethd-backend-dev-mongodb
+    image: mongo:latest
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+      - dev-mongodb_data:/data/db
+  dev-mongo-express:
+    container_name: wallethd-backend-dev-mongo-express
+    image: mongo-express:latest
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_URL=${ME_CONFIG_MONGODB_URL}
+      - ME_CONFIG_BASICAUTH_USERNAME=${ME_CONFIG_BASICAUTH_USERNAME}
+      - ME_CONFIG_BASICAUTH_PASSWORD=${ME_CONFIG_BASICAUTH_PASSWORD}
+    depends_on:
+      - dev-mongodb
+
+volumes:
+  dev-mongodb_data:
+    name: wallethd-backend-dev-mongodb_data
