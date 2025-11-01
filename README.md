@@ -22,4 +22,10 @@ Start local development
 
 ```
 make start
-``` 
+```
+
+or start local development with docker
+
+```
+make docker-dev
+```

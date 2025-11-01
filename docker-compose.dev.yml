@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile.dev
     ports:
       - 5001:5001
+    environment:
+      - FORCE_COLOR=true
     env_file:
       - .env
     volumes:
