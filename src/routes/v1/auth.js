@@ -1,6 +1,13 @@
 const express = require("express");
 
-const { register, login, getProfile } = require("../../controllers/auth");
+const {
+  register,
+  login,
+  logout,
+  getProfile,
+  updateDetails,
+  updatePassword
+} = require("../../controllers/auth");
 
 const { authenticate } = require("../../middleware/auth");
 
@@ -8,6 +15,9 @@ const router = express.Router();
 
 router.post("/register", register);
 router.post("/login", login);
+router.get("/logout", logout);
 router.get("/profile", authenticate, getProfile);
+router.put("/update-details", authenticate, updateDetails);
+router.put("/update-password", authenticate, updatePassword);
 
 module.exports = router;

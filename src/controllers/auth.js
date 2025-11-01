@@ -7,7 +7,7 @@ const ErrorResponse = require("../utils/errorResponse");
  * @route   POST /v1/auth/register
  * @access  Public
  */
-exports.register = asyncHandler(async (req, res, next) => {
+exports.register = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
 
   // create user
@@ -46,6 +46,23 @@ exports.login = asyncHandler(async (req, res, next) => {
 });
 
 /**
+ * @desc    Log user out / Clear cookie
+ * @route   GET /v1/auth/logout
+ * @access  Public
+ */
+exports.logout = asyncHandler(async (_, res) => {
+  res.cookie(process.env.JTW_COOKIE_NAME, "invalid", {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true,
+  });
+
+  res.status(200).json({
+    success: true,
+    data: {},
+  });
+});
+
+/**
  * @desc    Get current logged in user
  * @route   GET /v1/auth/profile
  * @access  Private
@@ -57,6 +74,50 @@ exports.getProfile = asyncHandler(async (req, res) => {
     success: true,
     data: user,
   });
+});
+
+/**
+ * @desc    Update user details
+ * @route   PUT /v1/auth/update-details
+ * @access  Private
+ */
+exports.updateDetails = asyncHandler(async (req, res) => {
+  const fieldsToUpdate = {
+    username: req.body.username,
+    email: req.body.email,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+  };
+
+  const user = await User.findByIdAndUpdate(req.user.id, fieldsToUpdate, {
+    new: true,
+    runValidators: true,
+  });
+
+  res.status(200).json({
+    success: true,
+    data: user,
+  });
+});
+
+/**
+ * @desc    Update password
+ * @route   PUT /v1/auth/update-password
+ * @access  Private
+ */
+exports.updatePassword = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.user.id).select("+password");
+
+  // check current password
+  if (!(await user.matchPassword(req.body.currentPassword))) {
+    return next(new ErrorResponse("Password is incorrect", 401));
+  }
+
+  user.password = req.body.newPassword;
+
+  await user.save();
+
+  sendTokenResponse(user, 200, res);
 });
 
 // get token from model, create cookie, and send response
@@ -75,7 +136,7 @@ const sendTokenResponse = (user, statusCode, res) => {
     options.secure = true;
   }
 
-  res.status(statusCode).cookie(process.env.TOKEN_NAME, token, options).json({
+  res.status(statusCode).cookie(process.env.JTW_COOKIE_NAME, token, options).json({
     success: true,
     token,
   });

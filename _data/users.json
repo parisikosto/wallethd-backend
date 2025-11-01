@@ -3,7 +3,7 @@
     "_id": "69063ad963c37628eb54b8cc",
     "username": "paris",
     "email": "paris@example.com",
-    "password": "$2b$10$zhT3zcPl2bv/cvZKPIPm2ePDvKNLBqxpT8apjg5qmT.iHX0Ti60lq",
+    "password": "123456",
     "profileImage": "no-profile-photo.jpg",
     "createdAt": "2025-11-01T16:52:41.157Z",
     "updatedAt": "2025-11-01T16:52:41.157Z"
@@ -12,7 +12,7 @@
     "_id": "69063d09c4ca784d93e7329b",
     "username": "john",
     "email": "john@example.com",
-    "password": "$2b$10$RQTvCCYWZMsVXBoxlJuKc.AvsSVjN5tj5wzxL6hVV6fHfrzodYsAe",
+    "password": "123456",
     "profileImage": "no-profile-photo.jpg",
     "createdAt": "2025-11-01T17:02:01.645Z",
     "updatedAt": "2025-11-01T17:02:01.645Z"
@@ -21,7 +21,7 @@
     "_id": "69063d12c4ca784d93e7329d",
     "username": "jane",
     "email": "jane@example.com",
-    "password": "$2b$10$glqBeuMXv5RwLDURpCbOHuHIl/NtwDJpw2Hjlap28mlGf0.p8s/ei",
+    "password": "123456",
     "profileImage": "no-profile-photo.jpg",
     "createdAt": "2025-11-01T17:02:10.355Z",
     "updatedAt": "2025-11-01T17:02:10.355Z"
@@ -30,7 +30,7 @@
     "_id": "69063d6dc4ca784d93e732ac",
     "username": "user",
     "email": "user@example.com",
-    "password": "$2b$10$cwWCFjty.oe5pJe5Ij7akOAmcAd4vHuPLQWlezmN79xskyP1ngnh2",
+    "password": "123456",
     "profileImage": "no-profile-photo.jpg",
     "createdAt": "2025-11-01T17:03:41.534Z",
     "updatedAt": "2025-11-01T17:03:41.534Z"
@@ -39,7 +39,7 @@
     "_id": "69063e75c4ca784d93e732b7",
     "username": "bob",
     "email": "bob@example.com",
-    "password": "$2b$10$7Uk84t.UxxZz08/PSbhkwevBmTNR3OxdVYnIulBjYpjSjrAB.AbsW",
+    "password": "123456",
     "firstName": "Bob",
     "lastName": "Ross",
     "profileImage": "no-profile-photo.jpg",
@@ -50,7 +50,7 @@
     "_id": "69063ea8c4ca784d93e732ba",
     "username": "mike",
     "email": "mike@example.com",
-    "password": "$2b$10$l1M/u2W8LuXfHpL3F1nH3us7ls/wSVBTS7j1YOEmBq2dDh8CKLNZW",
+    "password": "123456",
     "firstName": "Mike",
     "lastName": "Ross",
     "profileImage": "no-profile-photo.jpg",
