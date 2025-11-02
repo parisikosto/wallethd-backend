@@ -25,7 +25,10 @@ const SettingsSchema = new mongoose.Schema(
       default: false,
     },
   },
-  { timestamps: true }
+  {
+    // enable automatic createdAt and updatedAt fields
+    timestamps: true
+  }
 );
 
 module.exports = mongoose.model("Settings", SettingsSchema, "settings");
