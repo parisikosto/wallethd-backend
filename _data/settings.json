@@ -1,52 +1,52 @@
 [
   {
-    "_id": "690f3870f52cc982495974f9",
-    "user": "690f3870f52cc982495974f6",
+    "_id": "690f7b00b32b2df858e5bfc1",
+    "user": "690f7affb32b2df858e5bfbe",
     "defaultCurrency": "EUR",
     "firstDayOfMonth": 1,
     "locale": "en-US",
     "showDeletedMedia": false,
-    "createdAt": "2025-11-08T12:32:48.694Z",
-    "updatedAt": "2025-11-08T12:32:48.694Z"
+    "createdAt": "2025-11-08T17:16:48.057Z",
+    "updatedAt": "2025-11-08T17:16:48.057Z"
   },
   {
-    "_id": "690f3873f52cc98249597544",
-    "user": "690f3873f52cc98249597541",
+    "_id": "690f7b04b32b2df858e5c00c",
+    "user": "690f7b04b32b2df858e5c009",
     "defaultCurrency": "EUR",
     "firstDayOfMonth": 1,
     "locale": "en-US",
     "showDeletedMedia": false,
-    "createdAt": "2025-11-08T12:32:51.812Z",
-    "updatedAt": "2025-11-08T12:32:51.812Z"
+    "createdAt": "2025-11-08T17:16:52.462Z",
+    "updatedAt": "2025-11-08T17:16:52.462Z"
   },
   {
-    "_id": "690f3875f52cc9824959758f",
-    "user": "690f3875f52cc9824959758c",
+    "_id": "690f7b09b32b2df858e5c057",
+    "user": "690f7b09b32b2df858e5c054",
     "defaultCurrency": "EUR",
     "firstDayOfMonth": 1,
     "locale": "en-US",
     "showDeletedMedia": false,
-    "createdAt": "2025-11-08T12:32:53.964Z",
-    "updatedAt": "2025-11-08T12:32:53.964Z"
+    "createdAt": "2025-11-08T17:16:57.557Z",
+    "updatedAt": "2025-11-08T17:16:57.557Z"
   },
   {
-    "_id": "690f3878f52cc982495975da",
-    "user": "690f3878f52cc982495975d7",
+    "_id": "690f7b0eb32b2df858e5c0a2",
+    "user": "690f7b0eb32b2df858e5c09f",
     "defaultCurrency": "EUR",
     "firstDayOfMonth": 1,
     "locale": "en-US",
     "showDeletedMedia": false,
-    "createdAt": "2025-11-08T12:32:56.297Z",
-    "updatedAt": "2025-11-08T12:32:56.297Z"
+    "createdAt": "2025-11-08T17:17:02.194Z",
+    "updatedAt": "2025-11-08T17:17:02.194Z"
   },
   {
-    "_id": "690f387bf52cc98249597625",
-    "user": "690f387bf52cc98249597622",
+    "_id": "690f7b14b32b2df858e5c0ed",
+    "user": "690f7b14b32b2df858e5c0ea",
     "defaultCurrency": "EUR",
     "firstDayOfMonth": 1,
     "locale": "en-US",
     "showDeletedMedia": false,
-    "createdAt": "2025-11-08T12:32:59.162Z",
-    "updatedAt": "2025-11-08T12:32:59.162Z"
+    "createdAt": "2025-11-08T17:17:08.422Z",
+    "updatedAt": "2025-11-08T17:17:08.422Z"
   }
 ]

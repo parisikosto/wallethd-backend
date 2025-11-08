@@ -16,7 +16,7 @@ const CategorySchema = new mongoose.Schema(
     transactionType: {
       type: String,
       required: [true, "Please add a transaction type"],
-      enum: ["income", "expense", "transfer"],
+      enum: ["income", "expense"],
     },
     parent: {
       type: mongoose.Schema.Types.ObjectId,
