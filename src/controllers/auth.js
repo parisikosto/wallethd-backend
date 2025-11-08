@@ -1,6 +1,6 @@
 const asyncHandler = require("../middleware/asyncHandler");
-const Settings = require("../models/Settings");
 const User = require("../models/User");
+const createUserDefaults = require("../services/createUserDefaults")
 const ErrorResponse = require("../utils/errorResponse");
 
 /**
@@ -14,7 +14,8 @@ exports.register = asyncHandler(async (req, res) => {
   // create user
   const user = await User.create({ username, email, password });
 
-  await Settings.create({ user: user._id });
+  // create user default settings and categories
+  await createUserDefaults(user._id);
 
   sendTokenResponse(user, 200, res);
 });

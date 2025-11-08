@@ -1,0 +1,537 @@
+const mainCategories = [
+  // INCOMES
+  {
+    key: "salary",
+    name: "Salary",
+    transactionType: "income",
+    description: "Primary income from employment or regular contracted work.",
+    order: 0
+  },
+  {
+    key: "freelance-work",
+    name: "Freelance Work",
+    transactionType: "income",
+    description: "Extra income from side jobs, gigs, or freelance work.",
+    order: 1
+  },
+  {
+    key: "bonus",
+    name: "Bonus",
+    transactionType: "income",
+    description: "Extra income on top of your regular salary such as performance bonuses or annual rewards.",
+    order: 2
+  },
+  {
+    key: "allowance",
+    name: "Allowance",
+    transactionType: "income",
+    description: "Recurring allowance or pocket money received from family, guardians, or other sources.",
+    order: 3
+  },
+  {
+    key: "petty-cash",
+    name: "Petty Cash",
+    transactionType: "income",
+    description: "Small incoming amounts used for day-to-day spending or reimbursements.",
+    order: 4
+  },
+  {
+    key: "other",
+    name: "Other",
+    transactionType: "income",
+    description: "Income that doesn’t fit any other category, such as gifts, refunds, or one-off payments.",
+    order: 5
+  },
+  // EXPENSES
+  {
+    key: "food",
+    name: "Food",
+    transactionType: "expense",
+    description: "Daily food and dining expenses, either at home or outside.",
+    order: 0
+  },
+  {
+    key: "fitness-wellness",
+    name: "Fitness & Wellness",
+    transactionType: "expense",
+    description: "Physical activity, sports, and body-mind wellness expenses such as gym, yoga, pilates, or fitness classes.",
+    order: 1
+  },
+  {
+    key: "household",
+    name: "Household",
+    transactionType: "expense",
+    description: "Expenses related to operating and maintaining the home, including rent and supplies.",
+    order: 2
+  },
+  {
+    key: "utilities",
+    name: "Utilities",
+    transactionType: "expense",
+    description: "Recurring, essential bills for running the household such as water, electricity, and internet.",
+    order: 3
+  },
+  {
+    key: "vehicles",
+    name: "Vehicles",
+    transactionType: "expense",
+    description: "Expenses for owning, operating, and maintaining any vehicle.",
+    order: 4
+  },
+  {
+    key: "culture",
+    name: "Culture",
+    transactionType: "expense",
+    description: "Spending on books, movies, music, apps, or cultural experiences.",
+    order: 5
+  },
+  {
+    key: "social-life",
+    name: "Social Life",
+    transactionType: "expense",
+    description: "Expenses for hanging out with friends, gatherings, clubs, and social activities.",
+    order: 6
+  },
+  {
+    key: "apparel",
+    name: "Apparel",
+    transactionType: "expense",
+    description: "Clothing, shoes, and wearables for daily use or special occasions.",
+    order: 7
+  },
+  {
+    key: "beauty",
+    name: "Beauty",
+    transactionType: "expense",
+    description: "Cosmetics, personal care, salon, spa, and grooming services.",
+    order: 8
+  },
+  {
+    key: "health",
+    name: "Health",
+    transactionType: "expense",
+    description: "Medical expenses, medications, insurance, and health treatments.",
+    order: 9
+  },
+  {
+    key: "education",
+    name: "Education",
+    transactionType: "expense",
+    description: "Schooling, courses, and any learning-related spending.",
+    order: 10
+  },
+  {
+    key: "transport",
+    name: "Transport",
+    transactionType: "expense",
+    description: "Public or private transport costs for commuting or travel inside the city.",
+    order: 11
+  },
+  {
+    key: "gift",
+    name: "Gift",
+    transactionType: "expense",
+    description: "Presents, donations, or money you spend to give to others.",
+    order: 12
+  },
+  {
+    key: "pets",
+    name: "Pets",
+    transactionType: "expense",
+    description: "Costs related to pet care, food, grooming, and veterinary services.",
+    order: 13
+  },
+];
+
+const subCategories = [
+  // FOOD
+  {
+    key: "lunch",
+    name: "Lunch",
+    transactionType: "expense",
+    parentKey: "food",
+    description: "Lunch meals during the day, either at work or outside.",
+    order: 0
+  },
+  {
+    key: "dinner",
+    name: "Dinner",
+    transactionType: "expense",
+    parentKey: "food",
+    description: "Evening meals at restaurants or at home.",
+    order: 1
+  },
+  {
+    key: "eating-out",
+    name: "Eating Out",
+    transactionType: "expense",
+    parentKey: "food",
+    description: "Casual dining, takeaway, or fast food outside the home.",
+    order: 2
+  },
+  {
+    key: "beverages",
+    name: "Beverages",
+    transactionType: "expense",
+    parentKey: "food",
+    description: "Coffee, tea, juices, soft drinks, and similar.",
+    order: 3
+  },
+  // FITNESS & WELLNESS
+  {
+    key: "gym-membership",
+    name: "Gym Membership",
+    transactionType: "expense",
+    parentKey: "fitness-wellness",
+    description: "Monthly or yearly membership fees for a gym or fitness center.",
+    order: 0
+  },
+  {
+    key: "yoga-class",
+    name: "Yoga Class",
+    transactionType: "expense",
+    parentKey: "fitness-wellness",
+    description: "Payments for yoga classes, drop-ins, or online yoga platforms.",
+    order: 1
+  },
+  {
+    key: "pilates-class",
+    name: "Pilates Class",
+    transactionType: "expense",
+    parentKey: "fitness-wellness",
+    description: "Mat or reformer pilates classes, either in studio or online.",
+    order: 2
+  },
+  {
+    key: "fitness-class",
+    name: "Fitness Class",
+    transactionType: "expense",
+    parentKey: "fitness-wellness",
+    description: "Group workouts like HIIT, cross-training, dance fitness, or bootcamps.",
+    order: 3
+  },
+  {
+    key: "sports-club",
+    name: "Sports Club",
+    transactionType: "expense",
+    parentKey: "fitness-wellness",
+    description: "Membership or participation fees for sports clubs (football, basketball, tennis).",
+    order: 4
+  },
+  // HOUSEHOLD
+  {
+    key: "rent",
+    name: "Rent",
+    transactionType: "expense",
+    parentKey: "household",
+    description: "Monthly rent or mortgage for the place you live in.",
+    order: 0
+  },
+  {
+    key: "furniture",
+    name: "Furniture",
+    transactionType: "expense",
+    parentKey: "household",
+    description: "Buying or assembling furniture like sofas, beds, tables.",
+    order: 1
+  },
+  {
+    key: "toiletries",
+    name: "Toiletries",
+    transactionType: "expense",
+    parentKey: "household",
+    description: "Toilet paper, soap, shampoo, cleaning liquids, and other bathroom supplies.",
+    order: 2
+  },
+  {
+    key: "appliances",
+    name: "Appliances",
+    transactionType: "expense",
+    parentKey: "household",
+    description: "Purchases or repairs of household appliances (fridge, oven, washing machine).",
+    order: 3
+  },
+  {
+    key: "kitchen",
+    name: "Kitchen",
+    transactionType: "expense",
+    parentKey: "household",
+    description: "Kitchenware, utensils, and small kitchen upgrades.",
+    order: 4
+  },
+  {
+    key: "chandlery",
+    name: "Chandlery",
+    transactionType: "expense",
+    parentKey: "household",
+    description: "Miscellaneous household supplies that don’t fit elsewhere.",
+    order: 5
+  },
+  {
+    key: "laundry",
+    name: "Laundry",
+    transactionType: "expense",
+    parentKey: "household",
+    description: "Laundry services, dry cleaning, or laundromat expenses.",
+    order: 6
+  },
+  // UTILITIES
+  {
+    key: "electricity-bill",
+    name: "Electricity Bill",
+    transactionType: "expense",
+    parentKey: "utilities",
+    description: "Monthly or regular payments for electricity.",
+    order: 0
+  },
+  {
+    key: "internet-bill",
+    name: "Internet Bill",
+    transactionType: "expense",
+    parentKey: "utilities",
+    description: "Internet, fiber, or mobile data subscriptions at home.",
+    order: 1
+  },
+  {
+    key: "water-bill",
+    name: "Water Bill",
+    transactionType: "expense",
+    parentKey: "utilities",
+    description: "Monthly or regular payments for water usage.",
+    order: 2
+  },
+  // VEHICLES
+  {
+    key: "fuel",
+    name: "Fuel",
+    transactionType: "expense",
+    parentKey: "vehicles",
+    description: "Petrol, diesel, gas, or EV charging for vehicles.",
+    order: 0
+  },
+  {
+    key: "service",
+    name: "Service",
+    transactionType: "expense",
+    parentKey: "vehicles",
+    description: "Full vehicle service or larger repairs done by professionals.",
+    order: 1
+  },
+  {
+    key: "maintenance",
+    name: "Maintenance",
+    transactionType: "expense",
+    parentKey: "vehicles",
+    description: "Routine checks, tyre changes, oil, and small repairs for vehicles.",
+    order: 2
+  },
+  // CULTURE
+  {
+    key: "books",
+    name: "Books",
+    transactionType: "expense",
+    parentKey: "culture",
+    description: "Printed or digital books for leisure or learning.",
+    order: 0
+  },
+  {
+    key: "movies",
+    name: "Movies",
+    transactionType: "expense",
+    parentKey: "culture",
+    description: "Cinema tickets or movie rentals/streaming.",
+    order: 1
+  },
+  {
+    key: "music",
+    name: "Music",
+    transactionType: "expense",
+    parentKey: "culture",
+    description: "Music subscriptions, albums, or instruments.",
+    order: 2
+  },
+  {
+    key: "apps",
+    name: "Apps",
+    transactionType: "expense",
+    parentKey: "culture",
+    description: "Mobile or desktop app purchases and subscriptions.",
+    order: 3
+  },
+  // SOCIAL LIFE
+  {
+    key: "friend",
+    name: "Friend",
+    transactionType: "expense",
+    parentKey: "social-life",
+    description: "Expenses when meeting friends or going out with them.",
+    order: 0
+  },
+  {
+    key: "fellowship",
+    name: "Fellowship",
+    transactionType: "expense",
+    parentKey: "social-life",
+    description: "Small group, community, or church/social circle gatherings.",
+    order: 1
+  },
+  // APPAREL
+  {
+    key: "clothing",
+    name: "Clothing",
+    transactionType: "expense",
+    parentKey: "apparel",
+    description: "Everyday clothing purchases such as shirts, trousers, jackets.",
+    order: 0
+  },
+  {
+    key: "fashion",
+    name: "Fashion",
+    transactionType: "expense",
+    parentKey: "apparel",
+    description: "Fashion-forward or seasonal items, accessories, or branded wear.",
+    order: 1
+  },
+  {
+    key: "shoes",
+    name: "Shoes",
+    transactionType: "expense",
+    parentKey: "apparel",
+    description: "Shoes, boots, and footwear for work, sports, or leisure.",
+    order: 2
+  },
+  // BEAUTY
+  {
+    key: "cosmetics",
+    name: "Cosmetics",
+    transactionType: "expense",
+    parentKey: "beauty",
+    description: "Makeup, skincare, and personal beauty products.",
+    order: 0
+  },
+  {
+    key: "makeup",
+    name: "Makeup",
+    transactionType: "expense",
+    parentKey: "beauty",
+    description: "Foundations, lipsticks, palettes, and makeup tools.",
+    order: 1
+  },
+  {
+    key: "accessories",
+    name: "Accessories",
+    transactionType: "expense",
+    parentKey: "beauty",
+    description: "Beauty accessories, jewelry, hair accessories.",
+    order: 2
+  },
+  {
+    key: "beauty-services",
+    name: "Beauty Services",
+    transactionType: "expense",
+    parentKey: "beauty",
+    description: "Hairdresser, barber, spa, manicure/pedicure, or facial treatments.",
+    order: 3
+  },
+  // HEALTH
+  {
+    key: "health-general",
+    name: "Health (General)",
+    transactionType: "expense",
+    parentKey: "health",
+    description: "General health-related spending that doesn’t fit other health subcategories.",
+    order: 0
+  },
+  {
+    key: "medicine",
+    name: "Medicine",
+    transactionType: "expense",
+    parentKey: "health",
+    description: "Prescription drugs, over-the-counter medicine, vitamins.",
+    order: 1
+  },
+  {
+    key: "medical-insurance",
+    name: "Medical Insurance",
+    transactionType: "expense",
+    parentKey: "health",
+    description: "Health or medical insurance premiums.",
+    order: 2
+  },
+  // EDUCATION
+  {
+    key: "schooling",
+    name: "Schooling",
+    transactionType: "expense",
+    parentKey: "education",
+    description: "Tuition fees for school, college, or other formal education.",
+    order: 0
+  },
+  {
+    key: "textbooks",
+    name: "Textbooks",
+    transactionType: "expense",
+    parentKey: "education",
+    description: "Textbooks and study material for courses.",
+    order: 1
+  },
+  {
+    key: "school-supplies",
+    name: "School Supplies",
+    transactionType: "expense",
+    parentKey: "education",
+    description: "Notebooks, pens, stationery, and classroom materials.",
+    order: 2
+  },
+  {
+    key: "tuition",
+    name: "Tuition",
+    transactionType: "expense",
+    parentKey: "education",
+    description: "Tuition fees for school, college, or other formal education.",
+    order: 3
+  },
+  {
+    key: "academy",
+    name: "Academy",
+    transactionType: "expense",
+    parentKey: "education",
+    description: "Private academies, language schools, music or art lessons.",
+    order: 4
+  },
+  // TRANSPORT
+  {
+    key: "bus",
+    name: "Bus",
+    transactionType: "expense",
+    parentKey: "transport",
+    description: "Tickets or passes for bus transportation.",
+    order: 0
+  },
+  {
+    key: "subway",
+    name: "Subway",
+    transactionType: "expense",
+    parentKey: "transport",
+    description: "Metro or subway rides and monthly passes.",
+    order: 1
+  },
+  {
+    key: "plane",
+    name: "Plane",
+    transactionType: "expense",
+    parentKey: "transport",
+    description: "Flight tickets for business or leisure.",
+    order: 2
+  },
+  {
+    key: "taxi",
+    name: "Taxi",
+    transactionType: "expense",
+    parentKey: "transport",
+    description: "Taxi rides and local on-demand transport.",
+    order: 3
+  }
+];
+
+module.exports = { mainCategories, subCategories };
