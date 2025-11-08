@@ -7,15 +7,14 @@ const express = require("express");
 const morgan = require("morgan");
 
 // server configuration
-const config = require("./config");
-const port = config.port;
+const { port } = require("./config/express");
+
+// db connection
+const { connectDB } = require("./config/db");
+connectDB();
 
 // middleware
 const errorHandler = require("./middleware/errorHandler");
-
-// db connection
-const connectDB = require("./config/db");
-connectDB();
 
 // express application
 const app = express();

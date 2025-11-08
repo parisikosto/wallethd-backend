@@ -18,14 +18,8 @@ Install dependencies
 make install
 ```
 
-Start local development
+Start local development (with docker)
 
 ```
 make start
-```
-
-or start local development with docker
-
-```
-make docker-dev
 ```
