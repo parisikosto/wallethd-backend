@@ -1,14 +1,14 @@
-const asyncHandler = require("../middleware/asyncHandler");
-const User = require("../models/User");
-const createUserDefaults = require("../services/createUserDefaults")
-const ErrorResponse = require("../utils/errorResponse");
+const { asyncHandler } = require('../middleware/asyncHandler');
+const User = require('../models/User');
+const { createUserDefaults } = require('../services/createUserDefaults');
+const { ErrorResponse } = require('../utils/errorResponse');
 
 /**
  * @desc    Register user
  * @route   POST /v1/auth/register
  * @access  Public
  */
-exports.register = asyncHandler(async (req, res) => {
+const register = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
 
   // create user
@@ -25,26 +25,26 @@ exports.register = asyncHandler(async (req, res) => {
  * @route   POST /v1/auth/login
  * @access  Public
  */
-exports.login = asyncHandler(async (req, res, next) => {
+const login = asyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
 
   // validate email & password
   if (!email || !password) {
-    return next(new ErrorResponse("Please provide an email and password", 400));
+    return next(new ErrorResponse('Please provide an email and password', 400));
   }
 
   // check for user
-  const user = await User.findOne({ email }).select("+password");
+  const user = await User.findOne({ email }).select('+password');
 
   if (!user) {
-    return next(new ErrorResponse("Invalid credentials", 401));
+    return next(new ErrorResponse('Invalid credentials', 401));
   }
 
   // check if password matches
   const isMatch = await user.matchPassword(password);
 
   if (!isMatch) {
-    return next(new ErrorResponse("Invalid credentials", 401));
+    return next(new ErrorResponse('Invalid credentials', 401));
   }
 
   sendTokenResponse(user, 200, res);
@@ -55,8 +55,8 @@ exports.login = asyncHandler(async (req, res, next) => {
  * @route   GET /v1/auth/logout
  * @access  Public
  */
-exports.logout = asyncHandler(async (_, res) => {
-  res.cookie(process.env.JTW_COOKIE_NAME, "invalid", {
+const logout = asyncHandler(async (_, res) => {
+  res.cookie(process.env.JTW_COOKIE_NAME, 'invalid', {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
   });
@@ -72,12 +72,10 @@ exports.logout = asyncHandler(async (_, res) => {
  * @route   GET /v1/auth/profile
  * @access  Private
  */
-exports.getProfile = asyncHandler(async (req, res) => {
-  const user = req.user;
-
+const getProfile = asyncHandler(async (req, res) => {
   res.status(200).json({
     success: true,
-    data: user,
+    data: req.user,
   });
 });
 
@@ -86,7 +84,7 @@ exports.getProfile = asyncHandler(async (req, res) => {
  * @route   PUT /v1/auth/update-details
  * @access  Private
  */
-exports.updateDetails = asyncHandler(async (req, res) => {
+const updateDetails = asyncHandler(async (req, res) => {
   const fieldsToUpdate = {
     username: req.body.username,
     email: req.body.email,
@@ -110,12 +108,12 @@ exports.updateDetails = asyncHandler(async (req, res) => {
  * @route   PUT /v1/auth/update-password
  * @access  Private
  */
-exports.updatePassword = asyncHandler(async (req, res, next) => {
-  const user = await User.findById(req.user.id).select("+password");
+const updatePassword = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.user.id).select('+password');
 
   // check current password
   if (!(await user.matchPassword(req.body.currentPassword))) {
-    return next(new ErrorResponse("Password is incorrect", 401));
+    return next(new ErrorResponse('Password is incorrect', 401));
   }
 
   user.password = req.body.newPassword;
@@ -125,24 +123,34 @@ exports.updatePassword = asyncHandler(async (req, res, next) => {
   sendTokenResponse(user, 200, res);
 });
 
-// get token from model, create cookie, and send response
 const sendTokenResponse = (user, statusCode, res) => {
-  // create token
   const token = user.getSignedJwtToken();
 
   const options = {
     expires: new Date(
-      Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+      Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000,
     ),
     httpOnly: true,
   };
 
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === 'production') {
     options.secure = true;
   }
 
-  res.status(statusCode).cookie(process.env.JTW_COOKIE_NAME, token, options).json({
-    success: true,
-    token,
-  });
+  res
+    .status(statusCode)
+    .cookie(process.env.JTW_COOKIE_NAME, token, options)
+    .json({
+      success: true,
+      token,
+    });
+};
+
+module.exports = {
+  register,
+  login,
+  logout,
+  getProfile,
+  updateDetails,
+  updatePassword,
 };

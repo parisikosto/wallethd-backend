@@ -1,25 +1,29 @@
 // enviroment variables
-require("dotenv").config();
+require('dotenv').config();
 
 // built-in libs
-const fs = require("fs");
+const fs = require('fs');
 
 // third party libs
-require("colors");
-const mongoose = require("mongoose");
+require('colors');
+const mongoose = require('mongoose');
 
 // load models
-const Category = require("../src/models/Category");
-const Settings = require("../src/models/Settings");
-const User = require("../src/models/User");
+const Category = require('../src/models/Category');
+const Settings = require('../src/models/Settings');
+const User = require('../src/models/User');
 
 // connect to DB
 mongoose.connect(process.env.MONGO_URI);
 
 // read JSON files
-const categories = JSON.parse(fs.readFileSync(`${__dirname}/categories.json`, "utf-8"));
-const settings = JSON.parse(fs.readFileSync(`${__dirname}/settings.json`, "utf-8"));
-const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, "utf-8"));
+const categories = JSON.parse(
+  fs.readFileSync(`${__dirname}/categories.json`, 'utf-8'),
+);
+const settings = JSON.parse(
+  fs.readFileSync(`${__dirname}/settings.json`, 'utf-8'),
+);
+const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
 
 // import into DB
 const importData = async () => {
@@ -28,7 +32,7 @@ const importData = async () => {
     await Settings.create(settings);
     await User.create(users);
 
-    console.log("Data Imported...".green.inverse);
+    console.log('Data Imported...'.green.inverse);
     process.exit();
   } catch (err) {
     console.error(err);
@@ -42,16 +46,16 @@ const deleteData = async () => {
     await Settings.deleteMany();
     await User.deleteMany();
 
-    console.log("Data Destroyed...".red.inverse);
+    console.log('Data Destroyed...'.red.inverse);
     process.exit();
   } catch (err) {
     console.error(err);
   }
 };
 
-if (process.argv[2] === "-i") {
+if (process.argv[2] === '-i') {
   importData();
-} else if (process.argv[2] === "-d") {
+} else if (process.argv[2] === '-d') {
   deleteData();
 } else {
   process.exit();

@@ -1,12 +1,12 @@
-const mongoose = require("mongoose");
-const slugify = require("slugify");
+const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 const CategorySchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Please add a category name"],
-      maxlength: [50, "Category name can not be more than 50 characters"],
+      required: [true, 'Please add a category name'],
+      maxlength: [50, 'Category name can not be more than 50 characters'],
       trim: true,
     },
     slug: {
@@ -15,12 +15,12 @@ const CategorySchema = new mongoose.Schema(
     },
     transactionType: {
       type: String,
-      required: [true, "Please add a transaction type"],
-      enum: ["income", "expense"],
+      required: [true, 'Please add a transaction type'],
+      enum: ['income', 'expense'],
     },
     parent: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Category",
+      ref: 'Category',
       default: null,
       index: true,
     },
@@ -28,7 +28,7 @@ const CategorySchema = new mongoose.Schema(
       type: String,
       maxlength: [
         250,
-        "Category description can not be more than 250 characters",
+        'Category description can not be more than 250 characters',
       ],
     },
     isArchived: {
@@ -41,17 +41,16 @@ const CategorySchema = new mongoose.Schema(
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true },
 );
 
-CategorySchema.pre("save", function (next) {
-  if (this.isModified("name") && this.name) {
+// generate slug from name
+CategorySchema.pre('save', function (next) {
+  if (this.isModified('name') && this.name) {
     this.slug = slugify(this.name, {
       lower: true,
       strict: true,
@@ -61,12 +60,14 @@ CategorySchema.pre("save", function (next) {
   next();
 });
 
+// indexes
 CategorySchema.index(
   { user: 1, parent: 1, transactionType: 1, slug: 1 },
-  { unique: true }
+  { unique: true },
 );
 
+// secondary indexes
 CategorySchema.index({ user: 1, transactionType: 1 });
 CategorySchema.index({ user: 1, isArchived: 1 });
 
-module.exports = mongoose.model("Category", CategorySchema, "categories");
+module.exports = mongoose.model('Category', CategorySchema, 'categories');

@@ -11,5 +11,4 @@ delete-data:
 	docker exec wallethd-backend-dev-api node _data/seeder.js -d
 
 reset-data:
-	docker exec wallethd-backend-dev-api node _data/seeder.js -d
-	docker exec wallethd-backend-dev-api node _data/seeder.js -i
+	make delete-data && make import-data

@@ -1,11 +1,11 @@
-const slugify = require("slugify");
+const slugify = require('slugify');
 
 const {
   mainCategories,
   subCategories,
-} = require("../config/defaultCategories");
-const Category = require("../models/Category");
-const Settings = require("../models/Settings");
+} = require('../config/defaultCategories');
+const Category = require('../models/Category');
+const Settings = require('../models/Settings');
 
 const createUserDefaults = async (userId) => {
   /**
@@ -31,14 +31,14 @@ const createUserDefaults = async (userId) => {
       user: userId,
       name,
       transactionType,
-      description: description || "",
+      description: description || '',
       order,
       slug: slugify(name, {
         lower: true,
         strict: true,
         trim: true,
       }),
-    })
+    }),
   );
 
   const createdMainCategories = await Category.insertMany(mainCategoriesDocs);
@@ -55,17 +55,17 @@ const createUserDefaults = async (userId) => {
       name,
       transactionType,
       parent: keyToId[parentKey],
-      description: description || "",
+      description: description || '',
       order,
       slug: slugify(name, {
         lower: true,
         strict: true,
         trim: true,
       }),
-    })
+    }),
   );
 
   await Category.insertMany(subCategoriesDocs);
 };
 
-module.exports = createUserDefaults;
+module.exports = { createUserDefaults };

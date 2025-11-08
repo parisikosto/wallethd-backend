@@ -1,16 +1,10 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const SettingsSchema = new mongoose.Schema(
   {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-      unique: true,
-    },
     defaultCurrency: {
       type: String,
-      default: "EUR",
+      default: 'EUR',
     },
     firstDayOfMonth: {
       type: Number,
@@ -18,17 +12,20 @@ const SettingsSchema = new mongoose.Schema(
     },
     locale: {
       type: String,
-      default: "en-US",
+      default: 'en-US',
     },
     showDeletedMedia: {
       type: Boolean,
       default: false,
     },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+      unique: true,
+    },
   },
-  {
-    // enable automatic createdAt and updatedAt fields
-    timestamps: true
-  }
+  { timestamps: true },
 );
 
-module.exports = mongoose.model("Settings", SettingsSchema, "settings");
+module.exports = mongoose.model('Settings', SettingsSchema, 'settings');

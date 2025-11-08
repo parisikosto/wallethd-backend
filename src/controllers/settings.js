@@ -1,27 +1,50 @@
-const asyncHandler = require("../middleware/asyncHandler");
-const Settings = require("../models/Settings");
+const { asyncHandler } = require('../middleware/asyncHandler');
+const Settings = require('../models/Settings');
+const { ErrorResponse } = require('../utils/errorResponse');
 
 /**
- * @desc    Get user settings
- * @route   POST /v1/settings
+ * @desc    Get settings
+ * @route   GET /v1/settings
  * @access  Private
  */
-exports.getUserSettings = asyncHandler(async (req, res) => {
+const getSettings = asyncHandler(async (req, res, next) => {
   const settings = await Settings.findOne({ user: req.user.id });
-  res.status(200).json(settings);
+
+  if (!settings) {
+    return next(new ErrorResponse(`Settings not found`, 404));
+  }
+
+  res.status(200).json({ success: true, data: settings });
 });
 
 /**
- * @desc    Update user settings
- * @route   POST /v1/settings
+ * @desc    Update settings
+ * @route   PUT /v1/settings
  * @access  Private
  */
-exports.updateUserSettings = asyncHandler(async (req, res) => {
-  const settings = await Settings.findOneAndUpdate(
-    { user: req.user.id },
-    req.body,
-    { new: true, runValidators: true }
-  );
+const updateSettings = asyncHandler(async (req, res, next) => {
+  const settings = await Settings.findOne({ user: req.user.id });
 
-  res.status(200).json(settings);
+  if (!settings) {
+    return next(new ErrorResponse(`Settings not found`, 404));
+  }
+
+  const updatableFields = [
+    'defaultCurrency',
+    'firstDayOfMonth',
+    'locale',
+    'showDeletedMedia',
+  ];
+
+  updatableFields.forEach((field) => {
+    if (req.body[field] !== undefined) {
+      settings[field] = req.body[field];
+    }
+  });
+
+  await settings.save();
+
+  res.status(200).json({ success: true, data: settings });
 });
+
+module.exports = { getSettings, updateSettings };

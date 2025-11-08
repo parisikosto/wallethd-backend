@@ -1,13 +1,13 @@
-const asyncHandler = require("../middleware/asyncHandler");
-const Category = require("../models/Category");
-const ErrorResponse = require("../utils/errorResponse");
+const { asyncHandler } = require('../middleware/asyncHandler');
+const Category = require('../models/Category');
+const { ErrorResponse } = require('../utils/errorResponse');
 
 /**
  * @desc    Get categories
  * @route   GET /v1/categories
  * @access  Private
  */
-exports.getCategories = asyncHandler(async (_, res) => {
+const getCategories = asyncHandler(async (_, res) => {
   res.status(200).json(res.advancedResults);
 });
 
@@ -16,12 +16,12 @@ exports.getCategories = asyncHandler(async (_, res) => {
  * @route   GET /v1/categories/:id
  * @access  Private
  */
-exports.getSingleCategory = asyncHandler(async (req, res, next) => {
+const getSingleCategory = asyncHandler(async (req, res, next) => {
   const category = await Category.findById(req.params.id);
 
   if (!category) {
     return next(
-      new ErrorResponse(`Category with id ${req.params.id} not found`, 404)
+      new ErrorResponse(`Category with id ${req.params.id} not found`, 404),
     );
   }
 
@@ -33,10 +33,9 @@ exports.getSingleCategory = asyncHandler(async (req, res, next) => {
  * @route   POST /v1/categories
  * @access  Private
  */
-exports.createCategory = asyncHandler(async (req, res) => {
+const createCategory = asyncHandler(async (req, res, next) => {
   const { name, transactionType, parent, description } = req.body;
 
-  // validates parent belongs to user
   let parentId = null;
   if (parent) {
     const foundParentCategory = await Category.findOne({
@@ -46,10 +45,7 @@ exports.createCategory = asyncHandler(async (req, res) => {
 
     if (!foundParentCategory) {
       return next(
-        new ErrorResponse(
-          `Parent category with id ${req.params.id} not found`,
-          404
-        )
+        new ErrorResponse(`Parent category with id ${parent} not found`, 404),
       );
     }
 
@@ -64,10 +60,7 @@ exports.createCategory = asyncHandler(async (req, res) => {
     description,
   });
 
-  res.status(201).json({
-    success: true,
-    data: category,
-  });
+  res.status(201).json({ success: true, data: category });
 });
 
 /**
@@ -75,7 +68,7 @@ exports.createCategory = asyncHandler(async (req, res) => {
  * @route   PUT /v1/categories/:id
  * @access  Private
  */
-exports.updateCategory = asyncHandler(async (req, res, next) => {
+const updateCategory = asyncHandler(async (req, res, next) => {
   const category = await Category.findOne({
     _id: req.params.id,
     user: req.user.id,
@@ -83,17 +76,17 @@ exports.updateCategory = asyncHandler(async (req, res, next) => {
 
   if (!category) {
     return next(
-      new ErrorResponse(`Category with id ${req.params.id} not found`, 404)
+      new ErrorResponse(`Category with id ${req.params.id} not found`, 404),
     );
   }
 
   const updatableFields = [
-    "name",
-    "transactionType",
-    "parent",
-    "description",
-    "isArchived",
-    "order",
+    'name',
+    'transactionType',
+    'parent',
+    'description',
+    'isArchived',
+    'order',
   ];
 
   updatableFields.forEach((field) => {
@@ -111,9 +104,9 @@ exports.updateCategory = asyncHandler(async (req, res, next) => {
     if (!foundParentCategory) {
       return next(
         new ErrorResponse(
-          `Parent category with id ${req.params.id} not found`,
-          404
-        )
+          `Parent category with id ${req.body.parent} not found`,
+          404,
+        ),
       );
     }
 
@@ -122,10 +115,7 @@ exports.updateCategory = asyncHandler(async (req, res, next) => {
 
   await category.save();
 
-  res.status(200).json({
-    success: true,
-    data: category,
-  });
+  res.status(200).json({ success: true, data: category });
 });
 
 /**
@@ -133,23 +123,20 @@ exports.updateCategory = asyncHandler(async (req, res, next) => {
  * @route   PATCH /v1/categories/:id/archive
  * @access  Private
  */
-exports.archiveCategory = asyncHandler(async (req, res, next) => {
+const archiveCategory = asyncHandler(async (req, res, next) => {
   const category = await Category.findOneAndUpdate(
     { _id: req.params.id, user: req.user.id },
     { isArchived: true },
-    { new: true }
+    { new: true },
   );
 
   if (!category) {
     return next(
-      new ErrorResponse(`Category with id ${req.params.id} not found`, 404)
+      new ErrorResponse(`Category with id ${req.params.id} not found`, 404),
     );
   }
 
-  res.status(200).json({
-    success: true,
-    data: category,
-  });
+  res.status(200).json({ success: true, data: category });
 });
 
 /**
@@ -157,23 +144,20 @@ exports.archiveCategory = asyncHandler(async (req, res, next) => {
  * @route   PATCH /v1/categories/:id/unarchive
  * @access  Private
  */
-exports.unarchiveCategory = asyncHandler(async (req, res, next) => {
+const unarchiveCategory = asyncHandler(async (req, res, next) => {
   const category = await Category.findOneAndUpdate(
     { _id: req.params.id, user: req.user.id },
     { isArchived: false },
-    { new: true }
+    { new: true },
   );
 
   if (!category) {
     return next(
-      new ErrorResponse(`Category with id ${req.params.id} not found`, 404)
+      new ErrorResponse(`Category with id ${req.params.id} not found`, 404),
     );
   }
 
-  res.status(200).json({
-    success: true,
-    data: category,
-  });
+  res.status(200).json({ success: true, data: category });
 });
 
 /**
@@ -181,7 +165,7 @@ exports.unarchiveCategory = asyncHandler(async (req, res, next) => {
  * @route   DELETE /v1/categories/:id
  * @access  Private
  */
-exports.deleteCategory = asyncHandler(async (req, res, next) => {
+const deleteCategory = asyncHandler(async (req, res, next) => {
   const category = await Category.findOneAndDelete({
     _id: req.params.id,
     user: req.user.id,
@@ -189,12 +173,19 @@ exports.deleteCategory = asyncHandler(async (req, res, next) => {
 
   if (!category) {
     return next(
-      new ErrorResponse(`Category with id ${req.params.id} not found`, 404)
+      new ErrorResponse(`Category with id ${req.params.id} not found`, 404),
     );
   }
 
-  res.status(200).json({
-    success: true,
-    data: {},
-  });
+  res.status(200).json({ success: true, data: {} });
 });
+
+module.exports = {
+  getCategories,
+  getSingleCategory,
+  createCategory,
+  updateCategory,
+  archiveCategory,
+  unarchiveCategory,
+  deleteCategory,
+};
