@@ -15,9 +15,10 @@ const createUserDefaults = async (userId) => {
     return;
   }
 
-  const defaultAccounts = defaultAccountsNames.map((name) => ({
+  const defaultAccounts = defaultAccountsNames.map((name, idx) => ({
     user: userId,
     name,
+    order: idx,
   }));
 
   await Account.insertMany(defaultAccounts);
