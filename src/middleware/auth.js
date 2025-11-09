@@ -22,6 +22,13 @@ const authenticate = asyncHandler(async (req, _, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = await User.findById(decoded.id);
+
+    if (!req.user) {
+      return next(
+        new ErrorResponse('Not authorized to access this route', 401),
+      );
+    }
+
     next();
   } catch (error) {
     console.log('error', error.message);
