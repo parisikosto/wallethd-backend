@@ -1,20 +1,29 @@
 const slugify = require('slugify');
 
+const { defaultAccountsNames } = require('../config/accounts');
 const {
   mainCategories,
   subCategories,
 } = require('../config/defaultCategories');
+const Account = require('../models/Account');
 const Category = require('../models/Category');
 const Settings = require('../models/Settings');
 
 const createUserDefaults = async (userId) => {
   /**
-   * create user default settings
+   * create user default accounts
    */
-  const existingSettings = await Settings.findOne({ user: userId });
-  if (!existingSettings) {
-    await Settings.create({ user: userId });
+  const existingAccounts = await Account.countDocuments({ user: userId });
+  if (existingAccounts > 0) {
+    return;
   }
+
+  const defaultAccounts = defaultAccountsNames.map((name) => ({
+    user: userId,
+    name,
+  }));
+
+  await Account.insertMany(defaultAccounts);
 
   /**
    * create user default categories and subcategories
@@ -66,6 +75,14 @@ const createUserDefaults = async (userId) => {
   );
 
   await Category.insertMany(subCategoriesDocs);
+
+  /**
+   * create user default settings
+   */
+  const existingSettings = await Settings.findOne({ user: userId });
+  if (!existingSettings) {
+    await Settings.create({ user: userId });
+  }
 };
 
 module.exports = { createUserDefaults };
