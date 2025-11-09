@@ -1,0 +1,227 @@
+[
+  {
+    "_id": "691060dc6ec3edcdcd573499",
+    "name": "Cash",
+    "isArchived": false,
+    "order": 0,
+    "user": "691060dc6ec3edcdcd573496",
+    "createdAt": "2025-11-09T09:37:32.648Z",
+    "updatedAt": "2025-11-09T09:37:32.648Z"
+  },
+  {
+    "_id": "691060dc6ec3edcdcd57349a",
+    "name": "Bank Account",
+    "isArchived": false,
+    "order": 1,
+    "user": "691060dc6ec3edcdcd573496",
+    "createdAt": "2025-11-09T09:37:32.648Z",
+    "updatedAt": "2025-11-09T09:37:32.648Z"
+  },
+  {
+    "_id": "691060dc6ec3edcdcd57349b",
+    "name": "Revolut",
+    "isArchived": false,
+    "order": 2,
+    "user": "691060dc6ec3edcdcd573496",
+    "createdAt": "2025-11-09T09:37:32.648Z",
+    "updatedAt": "2025-11-09T09:37:32.648Z"
+  },
+  {
+    "_id": "691060dc6ec3edcdcd57349c",
+    "name": "Debit Card",
+    "isArchived": false,
+    "order": 3,
+    "user": "691060dc6ec3edcdcd573496",
+    "createdAt": "2025-11-09T09:37:32.648Z",
+    "updatedAt": "2025-11-09T09:37:32.648Z"
+  },
+  {
+    "_id": "691060dc6ec3edcdcd57349d",
+    "name": "Credit Card",
+    "isArchived": false,
+    "order": 4,
+    "user": "691060dc6ec3edcdcd573496",
+    "createdAt": "2025-11-09T09:37:32.648Z",
+    "updatedAt": "2025-11-09T09:37:32.648Z"
+  },
+  {
+    "_id": "691060de6ec3edcdcd5734eb",
+    "name": "Cash",
+    "isArchived": false,
+    "order": 0,
+    "user": "691060de6ec3edcdcd5734e8",
+    "createdAt": "2025-11-09T09:37:34.991Z",
+    "updatedAt": "2025-11-09T09:37:34.991Z"
+  },
+  {
+    "_id": "691060de6ec3edcdcd5734ec",
+    "name": "Bank Account",
+    "isArchived": false,
+    "order": 1,
+    "user": "691060de6ec3edcdcd5734e8",
+    "createdAt": "2025-11-09T09:37:34.991Z",
+    "updatedAt": "2025-11-09T09:37:34.991Z"
+  },
+  {
+    "_id": "691060de6ec3edcdcd5734ed",
+    "name": "Revolut",
+    "isArchived": false,
+    "order": 2,
+    "user": "691060de6ec3edcdcd5734e8",
+    "createdAt": "2025-11-09T09:37:34.991Z",
+    "updatedAt": "2025-11-09T09:37:34.991Z"
+  },
+  {
+    "_id": "691060de6ec3edcdcd5734ee",
+    "name": "Debit Card",
+    "isArchived": false,
+    "order": 3,
+    "user": "691060de6ec3edcdcd5734e8",
+    "createdAt": "2025-11-09T09:37:34.991Z",
+    "updatedAt": "2025-11-09T09:37:34.991Z"
+  },
+  {
+    "_id": "691060de6ec3edcdcd5734ef",
+    "name": "Credit Card",
+    "isArchived": false,
+    "order": 4,
+    "user": "691060de6ec3edcdcd5734e8",
+    "createdAt": "2025-11-09T09:37:34.991Z",
+    "updatedAt": "2025-11-09T09:37:34.991Z"
+  },
+  {
+    "_id": "691060e16ec3edcdcd57353d",
+    "name": "Cash",
+    "isArchived": false,
+    "order": 0,
+    "user": "691060e16ec3edcdcd57353a",
+    "createdAt": "2025-11-09T09:37:37.344Z",
+    "updatedAt": "2025-11-09T09:37:37.344Z"
+  },
+  {
+    "_id": "691060e16ec3edcdcd57353e",
+    "name": "Bank Account",
+    "isArchived": false,
+    "order": 1,
+    "user": "691060e16ec3edcdcd57353a",
+    "createdAt": "2025-11-09T09:37:37.344Z",
+    "updatedAt": "2025-11-09T09:37:37.344Z"
+  },
+  {
+    "_id": "691060e16ec3edcdcd57353f",
+    "name": "Revolut",
+    "isArchived": false,
+    "order": 2,
+    "user": "691060e16ec3edcdcd57353a",
+    "createdAt": "2025-11-09T09:37:37.344Z",
+    "updatedAt": "2025-11-09T09:37:37.344Z"
+  },
+  {
+    "_id": "691060e16ec3edcdcd573540",
+    "name": "Debit Card",
+    "isArchived": false,
+    "order": 3,
+    "user": "691060e16ec3edcdcd57353a",
+    "createdAt": "2025-11-09T09:37:37.344Z",
+    "updatedAt": "2025-11-09T09:37:37.344Z"
+  },
+  {
+    "_id": "691060e16ec3edcdcd573541",
+    "name": "Credit Card",
+    "isArchived": false,
+    "order": 4,
+    "user": "691060e16ec3edcdcd57353a",
+    "createdAt": "2025-11-09T09:37:37.344Z",
+    "updatedAt": "2025-11-09T09:37:37.344Z"
+  },
+  {
+    "_id": "691060e36ec3edcdcd57358f",
+    "name": "Cash",
+    "isArchived": false,
+    "order": 0,
+    "user": "691060e36ec3edcdcd57358c",
+    "createdAt": "2025-11-09T09:37:39.761Z",
+    "updatedAt": "2025-11-09T09:37:39.761Z"
+  },
+  {
+    "_id": "691060e36ec3edcdcd573590",
+    "name": "Bank Account",
+    "isArchived": false,
+    "order": 1,
+    "user": "691060e36ec3edcdcd57358c",
+    "createdAt": "2025-11-09T09:37:39.761Z",
+    "updatedAt": "2025-11-09T09:37:39.761Z"
+  },
+  {
+    "_id": "691060e36ec3edcdcd573591",
+    "name": "Revolut",
+    "isArchived": false,
+    "order": 2,
+    "user": "691060e36ec3edcdcd57358c",
+    "createdAt": "2025-11-09T09:37:39.761Z",
+    "updatedAt": "2025-11-09T09:37:39.761Z"
+  },
+  {
+    "_id": "691060e36ec3edcdcd573592",
+    "name": "Debit Card",
+    "isArchived": false,
+    "order": 3,
+    "user": "691060e36ec3edcdcd57358c",
+    "createdAt": "2025-11-09T09:37:39.761Z",
+    "updatedAt": "2025-11-09T09:37:39.761Z"
+  },
+  {
+    "_id": "691060e36ec3edcdcd573593",
+    "name": "Credit Card",
+    "isArchived": false,
+    "order": 4,
+    "user": "691060e36ec3edcdcd57358c",
+    "createdAt": "2025-11-09T09:37:39.761Z",
+    "updatedAt": "2025-11-09T09:37:39.761Z"
+  },
+  {
+    "_id": "691060f16ec3edcdcd5735e1",
+    "name": "Cash",
+    "isArchived": false,
+    "order": 0,
+    "user": "691060f16ec3edcdcd5735de",
+    "createdAt": "2025-11-09T09:37:53.768Z",
+    "updatedAt": "2025-11-09T09:37:53.768Z"
+  },
+  {
+    "_id": "691060f16ec3edcdcd5735e2",
+    "name": "Bank Account",
+    "isArchived": false,
+    "order": 1,
+    "user": "691060f16ec3edcdcd5735de",
+    "createdAt": "2025-11-09T09:37:53.769Z",
+    "updatedAt": "2025-11-09T09:37:53.769Z"
+  },
+  {
+    "_id": "691060f16ec3edcdcd5735e3",
+    "name": "Revolut",
+    "isArchived": false,
+    "order": 2,
+    "user": "691060f16ec3edcdcd5735de",
+    "createdAt": "2025-11-09T09:37:53.769Z",
+    "updatedAt": "2025-11-09T09:37:53.769Z"
+  },
+  {
+    "_id": "691060f16ec3edcdcd5735e4",
+    "name": "Debit Card",
+    "isArchived": false,
+    "order": 3,
+    "user": "691060f16ec3edcdcd5735de",
+    "createdAt": "2025-11-09T09:37:53.769Z",
+    "updatedAt": "2025-11-09T09:37:53.769Z"
+  },
+  {
+    "_id": "691060f16ec3edcdcd5735e5",
+    "name": "Credit Card",
+    "isArchived": false,
+    "order": 4,
+    "user": "691060f16ec3edcdcd5735de",
+    "createdAt": "2025-11-09T09:37:53.769Z",
+    "updatedAt": "2025-11-09T09:37:53.769Z"
+  }
+]

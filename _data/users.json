@@ -1,47 +1,47 @@
 [
   {
-    "_id": "690f7affb32b2df858e5bfbe",
+    "_id": "691060dc6ec3edcdcd573496",
     "username": "paris",
     "email": "paris@example.com",
     "password": "123456",
     "profileImage": "no-profile-photo.jpg",
-    "createdAt": "2025-11-08T17:16:47.877Z",
-    "updatedAt": "2025-11-08T17:16:47.877Z"
+    "createdAt": "2025-11-09T09:37:32.536Z",
+    "updatedAt": "2025-11-09T09:37:32.536Z"
   },
   {
-    "_id": "690f7b04b32b2df858e5c009",
+    "_id": "691060de6ec3edcdcd5734e8",
     "username": "john",
     "email": "john@example.com",
     "password": "123456",
     "profileImage": "no-profile-photo.jpg",
-    "createdAt": "2025-11-08T17:16:52.318Z",
-    "updatedAt": "2025-11-08T17:16:52.318Z"
+    "createdAt": "2025-11-09T09:37:34.892Z",
+    "updatedAt": "2025-11-09T09:37:34.892Z"
   },
   {
-    "_id": "690f7b09b32b2df858e5c054",
+    "_id": "691060e16ec3edcdcd57353a",
     "username": "jane",
     "email": "jane@example.com",
     "password": "123456",
     "profileImage": "no-profile-photo.jpg",
-    "createdAt": "2025-11-08T17:16:57.417Z",
-    "updatedAt": "2025-11-08T17:16:57.417Z"
+    "createdAt": "2025-11-09T09:37:37.257Z",
+    "updatedAt": "2025-11-09T09:37:37.257Z"
   },
   {
-    "_id": "690f7b0eb32b2df858e5c09f",
+    "_id": "691060e36ec3edcdcd57358c",
     "username": "bob",
     "email": "bob@example.com",
     "password": "123456",
     "profileImage": "no-profile-photo.jpg",
-    "createdAt": "2025-11-08T17:17:02.037Z",
-    "updatedAt": "2025-11-08T17:17:02.037Z"
+    "createdAt": "2025-11-09T09:37:39.687Z",
+    "updatedAt": "2025-11-09T09:37:39.687Z"
   },
   {
-    "_id": "690f7b14b32b2df858e5c0ea",
+    "_id": "691060f16ec3edcdcd5735de",
     "username": "mike",
     "email": "mike@example.com",
     "password": "123456",
     "profileImage": "no-profile-photo.jpg",
-    "createdAt": "2025-11-08T17:17:08.303Z",
-    "updatedAt": "2025-11-08T17:17:08.303Z"
+    "createdAt": "2025-11-09T09:37:53.694Z",
+    "updatedAt": "2025-11-09T09:37:53.694Z"
   }
 ]
