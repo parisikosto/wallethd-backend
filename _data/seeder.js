@@ -12,6 +12,7 @@ const mongoose = require('mongoose');
 const Account = require('../src/models/Account');
 const Category = require('../src/models/Category');
 const Settings = require('../src/models/Settings');
+const Transaction = require('../src/models/Transaction');
 const User = require('../src/models/User');
 
 // connect to DB
@@ -27,6 +28,30 @@ const categories = JSON.parse(
 const settings = JSON.parse(
   fs.readFileSync(`${__dirname}/settings.json`, 'utf-8'),
 );
+const transactionsJohnSalary = JSON.parse(
+  fs.readFileSync(`${__dirname}/transactionsJohnSalary.json`, 'utf-8'),
+);
+const transactionsParisElectricityBill = JSON.parse(
+  fs.readFileSync(
+    `${__dirname}/transactionsParisElectricityBill.json`,
+    'utf-8',
+  ),
+);
+const transactionsParisExpenses = JSON.parse(
+  fs.readFileSync(`${__dirname}/transactionsParisExpenses.json`, 'utf-8'),
+);
+const transactionsParisInstallments = JSON.parse(
+  fs.readFileSync(`${__dirname}/transactionsParisInstallments.json`, 'utf-8'),
+);
+const transactionsParisInternetBill = JSON.parse(
+  fs.readFileSync(`${__dirname}/transactionsParisInternetBill.json`, 'utf-8'),
+);
+const transactionsParisRent = JSON.parse(
+  fs.readFileSync(`${__dirname}/transactionsParisRent.json`, 'utf-8'),
+);
+const transactionsParisSalary = JSON.parse(
+  fs.readFileSync(`${__dirname}/transactionsParisSalary.json`, 'utf-8'),
+);
 const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
 
 // import into DB
@@ -35,6 +60,15 @@ const importData = async () => {
     await Account.insertMany(accounts);
     await Category.insertMany(categories);
     await Settings.create(settings);
+    await Transaction.insertMany([
+      ...transactionsJohnSalary,
+      ...transactionsParisElectricityBill,
+      ...transactionsParisExpenses,
+      ...transactionsParisInstallments,
+      ...transactionsParisInternetBill,
+      ...transactionsParisRent,
+      ...transactionsParisSalary,
+    ]);
     await User.create(users);
 
     console.log('Data Imported...'.green.inverse);
@@ -50,6 +84,7 @@ const deleteData = async () => {
     await Account.deleteMany();
     await Category.deleteMany();
     await Settings.deleteMany();
+    await Transaction.deleteMany();
     await User.deleteMany();
 
     console.log('Data Destroyed...'.red.inverse);
