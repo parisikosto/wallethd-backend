@@ -1,52 +1,52 @@
 [
   {
-    "_id": "691060dc6ec3edcdcd5734e6",
+    "_id": "6910b17431f81e8866aad42f",
     "defaultCurrency": "EUR",
     "firstDayOfMonth": 1,
     "locale": "en-US",
     "showDeletedMedia": false,
-    "user": "691060dc6ec3edcdcd573496",
-    "createdAt": "2025-11-09T09:37:32.686Z",
-    "updatedAt": "2025-11-09T09:37:32.686Z"
+    "user": "6910b17431f81e8866aad3d1",
+    "createdAt": "2025-11-09T15:21:24.552Z",
+    "updatedAt": "2025-11-09T15:21:24.552Z"
   },
   {
-    "_id": "691060df6ec3edcdcd573538",
+    "_id": "6910b17731f81e8866aad48f",
     "defaultCurrency": "EUR",
     "firstDayOfMonth": 1,
     "locale": "en-US",
     "showDeletedMedia": false,
-    "user": "691060de6ec3edcdcd5734e8",
-    "createdAt": "2025-11-09T09:37:35.064Z",
-    "updatedAt": "2025-11-09T09:37:35.064Z"
+    "user": "6910b17731f81e8866aad431",
+    "createdAt": "2025-11-09T15:21:27.966Z",
+    "updatedAt": "2025-11-09T15:21:27.966Z"
   },
   {
-    "_id": "691060e16ec3edcdcd57358a",
+    "_id": "6910b17a31f81e8866aad4ef",
     "defaultCurrency": "EUR",
     "firstDayOfMonth": 1,
     "locale": "en-US",
     "showDeletedMedia": false,
-    "user": "691060e16ec3edcdcd57353a",
-    "createdAt": "2025-11-09T09:37:37.393Z",
-    "updatedAt": "2025-11-09T09:37:37.393Z"
+    "user": "6910b17a31f81e8866aad491",
+    "createdAt": "2025-11-09T15:21:30.871Z",
+    "updatedAt": "2025-11-09T15:21:30.871Z"
   },
   {
-    "_id": "691060e36ec3edcdcd5735dc",
+    "_id": "6910b17d31f81e8866aad54f",
     "defaultCurrency": "EUR",
     "firstDayOfMonth": 1,
     "locale": "en-US",
     "showDeletedMedia": false,
-    "user": "691060e36ec3edcdcd57358c",
-    "createdAt": "2025-11-09T09:37:39.814Z",
-    "updatedAt": "2025-11-09T09:37:39.814Z"
+    "user": "6910b17d31f81e8866aad4f1",
+    "createdAt": "2025-11-09T15:21:33.877Z",
+    "updatedAt": "2025-11-09T15:21:33.877Z"
   },
   {
-    "_id": "691060f16ec3edcdcd57362e",
+    "_id": "6910b18031f81e8866aad5af",
     "defaultCurrency": "EUR",
     "firstDayOfMonth": 1,
     "locale": "en-US",
     "showDeletedMedia": false,
-    "user": "691060f16ec3edcdcd5735de",
-    "createdAt": "2025-11-09T09:37:53.800Z",
-    "updatedAt": "2025-11-09T09:37:53.800Z"
+    "user": "6910b18031f81e8866aad551",
+    "createdAt": "2025-11-09T15:21:36.974Z",
+    "updatedAt": "2025-11-09T15:21:36.974Z"
   }
 ]

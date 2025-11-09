@@ -1,227 +1,317 @@
 [
   {
-    "_id": "691060dc6ec3edcdcd573499",
+    "_id": "6910b17431f81e8866aad3d4",
     "name": "Cash",
     "isArchived": false,
     "order": 0,
-    "user": "691060dc6ec3edcdcd573496",
-    "createdAt": "2025-11-09T09:37:32.648Z",
-    "updatedAt": "2025-11-09T09:37:32.648Z"
+    "user": "6910b17431f81e8866aad3d1",
+    "createdAt": "2025-11-09T15:21:24.502Z",
+    "updatedAt": "2025-11-09T15:21:24.502Z"
   },
   {
-    "_id": "691060dc6ec3edcdcd57349a",
-    "name": "Bank Account",
-    "isArchived": false,
-    "order": 1,
-    "user": "691060dc6ec3edcdcd573496",
-    "createdAt": "2025-11-09T09:37:32.648Z",
-    "updatedAt": "2025-11-09T09:37:32.648Z"
-  },
-  {
-    "_id": "691060dc6ec3edcdcd57349b",
+    "_id": "6910b17431f81e8866aad3d5",
     "name": "Revolut",
     "isArchived": false,
-    "order": 2,
-    "user": "691060dc6ec3edcdcd573496",
-    "createdAt": "2025-11-09T09:37:32.648Z",
-    "updatedAt": "2025-11-09T09:37:32.648Z"
+    "order": 1,
+    "user": "6910b17431f81e8866aad3d1",
+    "createdAt": "2025-11-09T15:21:24.502Z",
+    "updatedAt": "2025-11-09T15:21:24.502Z"
   },
   {
-    "_id": "691060dc6ec3edcdcd57349c",
-    "name": "Debit Card",
+    "_id": "6910b17431f81e8866aad3d6",
+    "name": "Ticket Restaurant",
+    "isArchived": false,
+    "order": 2,
+    "user": "6910b17431f81e8866aad3d1",
+    "createdAt": "2025-11-09T15:21:24.502Z",
+    "updatedAt": "2025-11-09T15:21:24.502Z"
+  },
+  {
+    "_id": "6910b17431f81e8866aad3d7",
+    "name": "Ticket Compliment Card",
     "isArchived": false,
     "order": 3,
-    "user": "691060dc6ec3edcdcd573496",
-    "createdAt": "2025-11-09T09:37:32.648Z",
-    "updatedAt": "2025-11-09T09:37:32.648Z"
+    "user": "6910b17431f81e8866aad3d1",
+    "createdAt": "2025-11-09T15:21:24.502Z",
+    "updatedAt": "2025-11-09T15:21:24.502Z"
   },
   {
-    "_id": "691060dc6ec3edcdcd57349d",
-    "name": "Credit Card",
+    "_id": "6910b17431f81e8866aad3d8",
+    "name": "Debit Card",
     "isArchived": false,
     "order": 4,
-    "user": "691060dc6ec3edcdcd573496",
-    "createdAt": "2025-11-09T09:37:32.648Z",
-    "updatedAt": "2025-11-09T09:37:32.648Z"
+    "user": "6910b17431f81e8866aad3d1",
+    "createdAt": "2025-11-09T15:21:24.502Z",
+    "updatedAt": "2025-11-09T15:21:24.502Z"
   },
   {
-    "_id": "691060de6ec3edcdcd5734eb",
+    "_id": "6910b17431f81e8866aad3d9",
+    "name": "Credit Card",
+    "isArchived": false,
+    "order": 5,
+    "user": "6910b17431f81e8866aad3d1",
+    "createdAt": "2025-11-09T15:21:24.502Z",
+    "updatedAt": "2025-11-09T15:21:24.502Z"
+  },
+  {
+    "_id": "6910b17431f81e8866aad3da",
+    "name": "Bank Account",
+    "isArchived": false,
+    "order": 6,
+    "user": "6910b17431f81e8866aad3d1",
+    "createdAt": "2025-11-09T15:21:24.502Z",
+    "updatedAt": "2025-11-09T15:21:24.502Z"
+  },
+  {
+    "_id": "6910b17731f81e8866aad434",
     "name": "Cash",
     "isArchived": false,
     "order": 0,
-    "user": "691060de6ec3edcdcd5734e8",
-    "createdAt": "2025-11-09T09:37:34.991Z",
-    "updatedAt": "2025-11-09T09:37:34.991Z"
+    "user": "6910b17731f81e8866aad431",
+    "createdAt": "2025-11-09T15:21:27.915Z",
+    "updatedAt": "2025-11-09T15:21:27.915Z"
   },
   {
-    "_id": "691060de6ec3edcdcd5734ec",
-    "name": "Bank Account",
-    "isArchived": false,
-    "order": 1,
-    "user": "691060de6ec3edcdcd5734e8",
-    "createdAt": "2025-11-09T09:37:34.991Z",
-    "updatedAt": "2025-11-09T09:37:34.991Z"
-  },
-  {
-    "_id": "691060de6ec3edcdcd5734ed",
+    "_id": "6910b17731f81e8866aad435",
     "name": "Revolut",
     "isArchived": false,
-    "order": 2,
-    "user": "691060de6ec3edcdcd5734e8",
-    "createdAt": "2025-11-09T09:37:34.991Z",
-    "updatedAt": "2025-11-09T09:37:34.991Z"
+    "order": 1,
+    "user": "6910b17731f81e8866aad431",
+    "createdAt": "2025-11-09T15:21:27.915Z",
+    "updatedAt": "2025-11-09T15:21:27.915Z"
   },
   {
-    "_id": "691060de6ec3edcdcd5734ee",
-    "name": "Debit Card",
+    "_id": "6910b17731f81e8866aad436",
+    "name": "Ticket Restaurant",
+    "isArchived": false,
+    "order": 2,
+    "user": "6910b17731f81e8866aad431",
+    "createdAt": "2025-11-09T15:21:27.915Z",
+    "updatedAt": "2025-11-09T15:21:27.915Z"
+  },
+  {
+    "_id": "6910b17731f81e8866aad437",
+    "name": "Ticket Compliment Card",
     "isArchived": false,
     "order": 3,
-    "user": "691060de6ec3edcdcd5734e8",
-    "createdAt": "2025-11-09T09:37:34.991Z",
-    "updatedAt": "2025-11-09T09:37:34.991Z"
+    "user": "6910b17731f81e8866aad431",
+    "createdAt": "2025-11-09T15:21:27.915Z",
+    "updatedAt": "2025-11-09T15:21:27.915Z"
   },
   {
-    "_id": "691060de6ec3edcdcd5734ef",
-    "name": "Credit Card",
+    "_id": "6910b17731f81e8866aad438",
+    "name": "Debit Card",
     "isArchived": false,
     "order": 4,
-    "user": "691060de6ec3edcdcd5734e8",
-    "createdAt": "2025-11-09T09:37:34.991Z",
-    "updatedAt": "2025-11-09T09:37:34.991Z"
+    "user": "6910b17731f81e8866aad431",
+    "createdAt": "2025-11-09T15:21:27.915Z",
+    "updatedAt": "2025-11-09T15:21:27.915Z"
   },
   {
-    "_id": "691060e16ec3edcdcd57353d",
+    "_id": "6910b17731f81e8866aad439",
+    "name": "Credit Card",
+    "isArchived": false,
+    "order": 5,
+    "user": "6910b17731f81e8866aad431",
+    "createdAt": "2025-11-09T15:21:27.915Z",
+    "updatedAt": "2025-11-09T15:21:27.915Z"
+  },
+  {
+    "_id": "6910b17731f81e8866aad43a",
+    "name": "Bank Account",
+    "isArchived": false,
+    "order": 6,
+    "user": "6910b17731f81e8866aad431",
+    "createdAt": "2025-11-09T15:21:27.916Z",
+    "updatedAt": "2025-11-09T15:21:27.916Z"
+  },
+  {
+    "_id": "6910b17a31f81e8866aad494",
     "name": "Cash",
     "isArchived": false,
     "order": 0,
-    "user": "691060e16ec3edcdcd57353a",
-    "createdAt": "2025-11-09T09:37:37.344Z",
-    "updatedAt": "2025-11-09T09:37:37.344Z"
+    "user": "6910b17a31f81e8866aad491",
+    "createdAt": "2025-11-09T15:21:30.816Z",
+    "updatedAt": "2025-11-09T15:21:30.816Z"
   },
   {
-    "_id": "691060e16ec3edcdcd57353e",
-    "name": "Bank Account",
-    "isArchived": false,
-    "order": 1,
-    "user": "691060e16ec3edcdcd57353a",
-    "createdAt": "2025-11-09T09:37:37.344Z",
-    "updatedAt": "2025-11-09T09:37:37.344Z"
-  },
-  {
-    "_id": "691060e16ec3edcdcd57353f",
+    "_id": "6910b17a31f81e8866aad495",
     "name": "Revolut",
     "isArchived": false,
-    "order": 2,
-    "user": "691060e16ec3edcdcd57353a",
-    "createdAt": "2025-11-09T09:37:37.344Z",
-    "updatedAt": "2025-11-09T09:37:37.344Z"
+    "order": 1,
+    "user": "6910b17a31f81e8866aad491",
+    "createdAt": "2025-11-09T15:21:30.816Z",
+    "updatedAt": "2025-11-09T15:21:30.816Z"
   },
   {
-    "_id": "691060e16ec3edcdcd573540",
-    "name": "Debit Card",
+    "_id": "6910b17a31f81e8866aad496",
+    "name": "Ticket Restaurant",
+    "isArchived": false,
+    "order": 2,
+    "user": "6910b17a31f81e8866aad491",
+    "createdAt": "2025-11-09T15:21:30.816Z",
+    "updatedAt": "2025-11-09T15:21:30.816Z"
+  },
+  {
+    "_id": "6910b17a31f81e8866aad497",
+    "name": "Ticket Compliment Card",
     "isArchived": false,
     "order": 3,
-    "user": "691060e16ec3edcdcd57353a",
-    "createdAt": "2025-11-09T09:37:37.344Z",
-    "updatedAt": "2025-11-09T09:37:37.344Z"
+    "user": "6910b17a31f81e8866aad491",
+    "createdAt": "2025-11-09T15:21:30.816Z",
+    "updatedAt": "2025-11-09T15:21:30.816Z"
   },
   {
-    "_id": "691060e16ec3edcdcd573541",
-    "name": "Credit Card",
+    "_id": "6910b17a31f81e8866aad498",
+    "name": "Debit Card",
     "isArchived": false,
     "order": 4,
-    "user": "691060e16ec3edcdcd57353a",
-    "createdAt": "2025-11-09T09:37:37.344Z",
-    "updatedAt": "2025-11-09T09:37:37.344Z"
+    "user": "6910b17a31f81e8866aad491",
+    "createdAt": "2025-11-09T15:21:30.816Z",
+    "updatedAt": "2025-11-09T15:21:30.816Z"
   },
   {
-    "_id": "691060e36ec3edcdcd57358f",
+    "_id": "6910b17a31f81e8866aad499",
+    "name": "Credit Card",
+    "isArchived": false,
+    "order": 5,
+    "user": "6910b17a31f81e8866aad491",
+    "createdAt": "2025-11-09T15:21:30.816Z",
+    "updatedAt": "2025-11-09T15:21:30.816Z"
+  },
+  {
+    "_id": "6910b17a31f81e8866aad49a",
+    "name": "Bank Account",
+    "isArchived": false,
+    "order": 6,
+    "user": "6910b17a31f81e8866aad491",
+    "createdAt": "2025-11-09T15:21:30.816Z",
+    "updatedAt": "2025-11-09T15:21:30.816Z"
+  },
+  {
+    "_id": "6910b17d31f81e8866aad4f4",
     "name": "Cash",
     "isArchived": false,
     "order": 0,
-    "user": "691060e36ec3edcdcd57358c",
-    "createdAt": "2025-11-09T09:37:39.761Z",
-    "updatedAt": "2025-11-09T09:37:39.761Z"
+    "user": "6910b17d31f81e8866aad4f1",
+    "createdAt": "2025-11-09T15:21:33.818Z",
+    "updatedAt": "2025-11-09T15:21:33.818Z"
   },
   {
-    "_id": "691060e36ec3edcdcd573590",
-    "name": "Bank Account",
-    "isArchived": false,
-    "order": 1,
-    "user": "691060e36ec3edcdcd57358c",
-    "createdAt": "2025-11-09T09:37:39.761Z",
-    "updatedAt": "2025-11-09T09:37:39.761Z"
-  },
-  {
-    "_id": "691060e36ec3edcdcd573591",
+    "_id": "6910b17d31f81e8866aad4f5",
     "name": "Revolut",
     "isArchived": false,
-    "order": 2,
-    "user": "691060e36ec3edcdcd57358c",
-    "createdAt": "2025-11-09T09:37:39.761Z",
-    "updatedAt": "2025-11-09T09:37:39.761Z"
+    "order": 1,
+    "user": "6910b17d31f81e8866aad4f1",
+    "createdAt": "2025-11-09T15:21:33.818Z",
+    "updatedAt": "2025-11-09T15:21:33.818Z"
   },
   {
-    "_id": "691060e36ec3edcdcd573592",
-    "name": "Debit Card",
+    "_id": "6910b17d31f81e8866aad4f6",
+    "name": "Ticket Restaurant",
+    "isArchived": false,
+    "order": 2,
+    "user": "6910b17d31f81e8866aad4f1",
+    "createdAt": "2025-11-09T15:21:33.818Z",
+    "updatedAt": "2025-11-09T15:21:33.818Z"
+  },
+  {
+    "_id": "6910b17d31f81e8866aad4f7",
+    "name": "Ticket Compliment Card",
     "isArchived": false,
     "order": 3,
-    "user": "691060e36ec3edcdcd57358c",
-    "createdAt": "2025-11-09T09:37:39.761Z",
-    "updatedAt": "2025-11-09T09:37:39.761Z"
+    "user": "6910b17d31f81e8866aad4f1",
+    "createdAt": "2025-11-09T15:21:33.818Z",
+    "updatedAt": "2025-11-09T15:21:33.818Z"
   },
   {
-    "_id": "691060e36ec3edcdcd573593",
-    "name": "Credit Card",
+    "_id": "6910b17d31f81e8866aad4f8",
+    "name": "Debit Card",
     "isArchived": false,
     "order": 4,
-    "user": "691060e36ec3edcdcd57358c",
-    "createdAt": "2025-11-09T09:37:39.761Z",
-    "updatedAt": "2025-11-09T09:37:39.761Z"
+    "user": "6910b17d31f81e8866aad4f1",
+    "createdAt": "2025-11-09T15:21:33.818Z",
+    "updatedAt": "2025-11-09T15:21:33.818Z"
   },
   {
-    "_id": "691060f16ec3edcdcd5735e1",
+    "_id": "6910b17d31f81e8866aad4f9",
+    "name": "Credit Card",
+    "isArchived": false,
+    "order": 5,
+    "user": "6910b17d31f81e8866aad4f1",
+    "createdAt": "2025-11-09T15:21:33.818Z",
+    "updatedAt": "2025-11-09T15:21:33.818Z"
+  },
+  {
+    "_id": "6910b17d31f81e8866aad4fa",
+    "name": "Bank Account",
+    "isArchived": false,
+    "order": 6,
+    "user": "6910b17d31f81e8866aad4f1",
+    "createdAt": "2025-11-09T15:21:33.818Z",
+    "updatedAt": "2025-11-09T15:21:33.818Z"
+  },
+  {
+    "_id": "6910b18031f81e8866aad554",
     "name": "Cash",
     "isArchived": false,
     "order": 0,
-    "user": "691060f16ec3edcdcd5735de",
-    "createdAt": "2025-11-09T09:37:53.768Z",
-    "updatedAt": "2025-11-09T09:37:53.768Z"
+    "user": "6910b18031f81e8866aad551",
+    "createdAt": "2025-11-09T15:21:36.950Z",
+    "updatedAt": "2025-11-09T15:21:36.950Z"
   },
   {
-    "_id": "691060f16ec3edcdcd5735e2",
-    "name": "Bank Account",
-    "isArchived": false,
-    "order": 1,
-    "user": "691060f16ec3edcdcd5735de",
-    "createdAt": "2025-11-09T09:37:53.769Z",
-    "updatedAt": "2025-11-09T09:37:53.769Z"
-  },
-  {
-    "_id": "691060f16ec3edcdcd5735e3",
+    "_id": "6910b18031f81e8866aad555",
     "name": "Revolut",
     "isArchived": false,
-    "order": 2,
-    "user": "691060f16ec3edcdcd5735de",
-    "createdAt": "2025-11-09T09:37:53.769Z",
-    "updatedAt": "2025-11-09T09:37:53.769Z"
+    "order": 1,
+    "user": "6910b18031f81e8866aad551",
+    "createdAt": "2025-11-09T15:21:36.950Z",
+    "updatedAt": "2025-11-09T15:21:36.950Z"
   },
   {
-    "_id": "691060f16ec3edcdcd5735e4",
-    "name": "Debit Card",
+    "_id": "6910b18031f81e8866aad556",
+    "name": "Ticket Restaurant",
+    "isArchived": false,
+    "order": 2,
+    "user": "6910b18031f81e8866aad551",
+    "createdAt": "2025-11-09T15:21:36.950Z",
+    "updatedAt": "2025-11-09T15:21:36.950Z"
+  },
+  {
+    "_id": "6910b18031f81e8866aad557",
+    "name": "Ticket Compliment Card",
     "isArchived": false,
     "order": 3,
-    "user": "691060f16ec3edcdcd5735de",
-    "createdAt": "2025-11-09T09:37:53.769Z",
-    "updatedAt": "2025-11-09T09:37:53.769Z"
+    "user": "6910b18031f81e8866aad551",
+    "createdAt": "2025-11-09T15:21:36.950Z",
+    "updatedAt": "2025-11-09T15:21:36.950Z"
   },
   {
-    "_id": "691060f16ec3edcdcd5735e5",
-    "name": "Credit Card",
+    "_id": "6910b18031f81e8866aad558",
+    "name": "Debit Card",
     "isArchived": false,
     "order": 4,
-    "user": "691060f16ec3edcdcd5735de",
-    "createdAt": "2025-11-09T09:37:53.769Z",
-    "updatedAt": "2025-11-09T09:37:53.769Z"
+    "user": "6910b18031f81e8866aad551",
+    "createdAt": "2025-11-09T15:21:36.950Z",
+    "updatedAt": "2025-11-09T15:21:36.950Z"
+  },
+  {
+    "_id": "6910b18031f81e8866aad559",
+    "name": "Credit Card",
+    "isArchived": false,
+    "order": 5,
+    "user": "6910b18031f81e8866aad551",
+    "createdAt": "2025-11-09T15:21:36.950Z",
+    "updatedAt": "2025-11-09T15:21:36.950Z"
+  },
+  {
+    "_id": "6910b18031f81e8866aad55a",
+    "name": "Bank Account",
+    "isArchived": false,
+    "order": 6,
+    "user": "6910b18031f81e8866aad551",
+    "createdAt": "2025-11-09T15:21:36.950Z",
+    "updatedAt": "2025-11-09T15:21:36.950Z"
   }
 ]

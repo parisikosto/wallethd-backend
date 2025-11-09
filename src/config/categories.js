@@ -39,12 +39,20 @@ const mainCategories = [
     order: 4,
   },
   {
+    key: 'item-sale',
+    name: 'Item Sale',
+    transactionType: 'income',
+    description:
+      'Money received from selling personal items such as electronics, furniture, or accessories.',
+    order: 5,
+  },
+  {
     key: 'other',
     name: 'Other',
     transactionType: 'income',
     description:
       'Income that doesn’t fit any other category, such as gifts, refunds, or one-off payments.',
-    order: 5,
+    order: 6,
   },
   // EXPENSES
   {
@@ -79,27 +87,18 @@ const mainCategories = [
     order: 3,
   },
   {
+    key: 'devices',
+    name: 'Devices',
+    transactionType: 'expense',
+    description: 'Devices and electronics for daily use.',
+    order: 4,
+  },
+  {
     key: 'vehicles',
     name: 'Vehicles',
     transactionType: 'expense',
     description: 'Expenses for owning, operating, and maintaining any vehicle.',
-    order: 4,
-  },
-  {
-    key: 'culture',
-    name: 'Culture',
-    transactionType: 'expense',
-    description:
-      'Spending on books, movies, music, apps, or cultural experiences.',
     order: 5,
-  },
-  {
-    key: 'social-life',
-    name: 'Social Life',
-    transactionType: 'expense',
-    description:
-      'Expenses for hanging out with friends, gatherings, clubs, and social activities.',
-    order: 6,
   },
   {
     key: 'apparel',
@@ -107,14 +106,7 @@ const mainCategories = [
     transactionType: 'expense',
     description:
       'Clothing, shoes, and wearables for daily use or special occasions.',
-    order: 7,
-  },
-  {
-    key: 'beauty',
-    name: 'Beauty',
-    transactionType: 'expense',
-    description: 'Cosmetics, personal care, salon, spa, and grooming services.',
-    order: 8,
+    order: 6,
   },
   {
     key: 'health',
@@ -122,14 +114,7 @@ const mainCategories = [
     transactionType: 'expense',
     description:
       'Medical expenses, medications, insurance, and health treatments.',
-    order: 9,
-  },
-  {
-    key: 'education',
-    name: 'Education',
-    transactionType: 'expense',
-    description: 'Schooling, courses, and any learning-related spending.',
-    order: 10,
+    order: 7,
   },
   {
     key: 'transport',
@@ -137,14 +122,44 @@ const mainCategories = [
     transactionType: 'expense',
     description:
       'Public or private transport costs for commuting or travel inside the city.',
+    order: 8,
+  },
+  {
+    key: 'culture',
+    name: 'Culture',
+    transactionType: 'expense',
+    description:
+      'Spending on books, movies, music, apps, or cultural experiences.',
+    order: 9,
+  },
+  {
+    key: 'social-life',
+    name: 'Social Life',
+    transactionType: 'expense',
+    description:
+      'Expenses for hanging out with friends, gatherings, clubs, and social activities.',
+    order: 10,
+  },
+  {
+    key: 'beauty',
+    name: 'Beauty',
+    transactionType: 'expense',
+    description: 'Cosmetics, personal care, salon, spa, and grooming services.',
     order: 11,
+  },
+  {
+    key: 'education',
+    name: 'Education',
+    transactionType: 'expense',
+    description: 'Schooling, courses, and any learning-related spending.',
+    order: 12,
   },
   {
     key: 'gift',
     name: 'Gift',
     transactionType: 'expense',
     description: 'Presents, donations, or money you spend to give to others.',
-    order: 12,
+    order: 13,
   },
   {
     key: 'pets',
@@ -152,7 +167,7 @@ const mainCategories = [
     transactionType: 'expense',
     description:
       'Costs related to pet care, food, grooming, and veterinary services.',
-    order: 13,
+    order: 14,
   },
 ];
 
@@ -175,12 +190,20 @@ const subCategories = [
     order: 1,
   },
   {
+    key: 'supplements',
+    name: 'Supplements',
+    transactionType: 'expense',
+    parentKey: 'food',
+    description: 'Vitamins, minerals, and other supplements for daily use.',
+    order: 2,
+  },
+  {
     key: 'eating-out',
     name: 'Eating Out',
     transactionType: 'expense',
     parentKey: 'food',
     description: 'Casual dining, takeaway, or fast food outside the home.',
-    order: 2,
+    order: 3,
   },
   {
     key: 'beverages',
@@ -188,7 +211,7 @@ const subCategories = [
     transactionType: 'expense',
     parentKey: 'food',
     description: 'Coffee, tea, juices, soft drinks, and similar.',
-    order: 3,
+    order: 4,
   },
   // FITNESS & WELLNESS
   {
@@ -319,6 +342,71 @@ const subCategories = [
     description: 'Monthly or regular payments for water usage.',
     order: 2,
   },
+  {
+    key: 'common-charges',
+    name: 'Common Charges',
+    transactionType: 'expense',
+    parentKey: 'utilities',
+    description: 'Common charges for the apartment or building.',
+    order: 3,
+  },
+  // DEVICES
+  {
+    key: 'mobile',
+    name: 'Mobile',
+    transactionType: 'expense',
+    parentKey: 'devices',
+    description: 'Mobile phones and related devices.',
+    order: 0,
+  },
+  {
+    key: 'computer',
+    name: 'Computer',
+    transactionType: 'expense',
+    parentKey: 'devices',
+    description: 'Desktop or laptop computers.',
+    order: 1,
+  },
+  {
+    key: 'tablet',
+    name: 'Tablet',
+    transactionType: 'expense',
+    parentKey: 'devices',
+    description: 'Tablet devices for daily use.',
+    order: 2,
+  },
+  {
+    key: 'smartwatch',
+    name: 'Smartwatch',
+    transactionType: 'expense',
+    parentKey: 'devices',
+    description: 'Smartwatches and wearables.',
+    order: 3,
+  },
+  {
+    key: 'smart-tv',
+    name: 'Smart TV',
+    transactionType: 'expense',
+    parentKey: 'devices',
+    description: 'Smart televisions and TV boxes.',
+    order: 4,
+  },
+  {
+    key: 'smart-home',
+    name: 'Smart Home',
+    transactionType: 'expense',
+    parentKey: 'devices',
+    description: 'Smart home devices (lights, sensors, cameras, hubs).',
+    order: 5,
+  },
+  {
+    key: 'electronics',
+    name: 'Electronics',
+    transactionType: 'expense',
+    parentKey: 'devices',
+    description: 'Various electronic gadgets and accessories.',
+    order: 6,
+  },
   // VEHICLES
   {
     key: 'fuel',
@@ -345,6 +433,101 @@ const subCategories = [
     description:
       'Routine checks, tyre changes, oil, and small repairs for vehicles.',
     order: 2,
+  },
+  // APPAREL
+  {
+    key: 'clothing',
+    name: 'Clothing',
+    transactionType: 'expense',
+    parentKey: 'apparel',
+    description:
+      'Everyday clothing purchases such as shirts, trousers, jackets.',
+    order: 0,
+  },
+  {
+    key: 'fashion',
+    name: 'Fashion',
+    transactionType: 'expense',
+    parentKey: 'apparel',
+    description:
+      'Fashion-forward or seasonal items, accessories, or branded wear.',
+    order: 1,
+  },
+  {
+    key: 'shoes',
+    name: 'Shoes',
+    transactionType: 'expense',
+    parentKey: 'apparel',
+    description: 'Shoes, boots, and footwear for work, sports, or leisure.',
+    order: 2,
+  },
+  // HEALTH
+  {
+    key: 'medical-services',
+    name: 'Medical Services',
+    transactionType: 'expense',
+    parentKey: 'health',
+    description:
+      'Doctor appointments, check-ups, lab tests, or specialist consultations.',
+    order: 0,
+  },
+  {
+    key: 'medicines',
+    name: 'Medicines',
+    transactionType: 'expense',
+    parentKey: 'health',
+    description: 'Prescription drugs, over-the-counter medicine, vitamins.',
+    order: 1,
+  },
+  {
+    key: 'health-general',
+    name: 'Health (General)',
+    transactionType: 'expense',
+    parentKey: 'health',
+    description:
+      'General health-related spending that doesn’t fit other health subcategories.',
+    order: 2,
+  },
+  {
+    key: 'medical-insurance',
+    name: 'Medical Insurance',
+    transactionType: 'expense',
+    parentKey: 'health',
+    description: 'Health or medical insurance premiums.',
+    order: 3,
+  },
+  // TRANSPORT
+  {
+    key: 'bus',
+    name: 'Bus',
+    transactionType: 'expense',
+    parentKey: 'transport',
+    description: 'Tickets or passes for bus transportation.',
+    order: 0,
+  },
+  {
+    key: 'subway',
+    name: 'Subway',
+    transactionType: 'expense',
+    parentKey: 'transport',
+    description: 'Metro or subway rides and monthly passes.',
+    order: 1,
+  },
+  {
+    key: 'plane',
+    name: 'Plane',
+    transactionType: 'expense',
+    parentKey: 'transport',
+    description: 'Flight tickets for business or leisure.',
+    order: 2,
+  },
+  {
+    key: 'taxi',
+    name: 'Taxi',
+    transactionType: 'expense',
+    parentKey: 'transport',
+    description: 'Taxi rides and local on-demand transport.',
+    order: 3,
   },
   // CULTURE
   {
@@ -396,33 +579,6 @@ const subCategories = [
     description: 'Small group, community, or church/social circle gatherings.',
     order: 1,
   },
-  // APPAREL
-  {
-    key: 'clothing',
-    name: 'Clothing',
-    transactionType: 'expense',
-    parentKey: 'apparel',
-    description:
-      'Everyday clothing purchases such as shirts, trousers, jackets.',
-    order: 0,
-  },
-  {
-    key: 'fashion',
-    name: 'Fashion',
-    transactionType: 'expense',
-    parentKey: 'apparel',
-    description:
-      'Fashion-forward or seasonal items, accessories, or branded wear.',
-    order: 1,
-  },
-  {
-    key: 'shoes',
-    name: 'Shoes',
-    transactionType: 'expense',
-    parentKey: 'apparel',
-    description: 'Shoes, boots, and footwear for work, sports, or leisure.',
-    order: 2,
-  },
   // BEAUTY
   {
     key: 'cosmetics',
@@ -456,32 +612,6 @@ const subCategories = [
     description:
       'Hairdresser, barber, spa, manicure/pedicure, or facial treatments.',
     order: 3,
-  },
-  // HEALTH
-  {
-    key: 'health-general',
-    name: 'Health (General)',
-    transactionType: 'expense',
-    parentKey: 'health',
-    description:
-      'General health-related spending that doesn’t fit other health subcategories.',
-    order: 0,
-  },
-  {
-    key: 'medicine',
-    name: 'Medicine',
-    transactionType: 'expense',
-    parentKey: 'health',
-    description: 'Prescription drugs, over-the-counter medicine, vitamins.',
-    order: 1,
-  },
-  {
-    key: 'medical-insurance',
-    name: 'Medical Insurance',
-    transactionType: 'expense',
-    parentKey: 'health',
-    description: 'Health or medical insurance premiums.',
-    order: 2,
   },
   // EDUCATION
   {
@@ -523,39 +653,6 @@ const subCategories = [
     parentKey: 'education',
     description: 'Private academies, language schools, music or art lessons.',
     order: 4,
-  },
-  // TRANSPORT
-  {
-    key: 'bus',
-    name: 'Bus',
-    transactionType: 'expense',
-    parentKey: 'transport',
-    description: 'Tickets or passes for bus transportation.',
-    order: 0,
-  },
-  {
-    key: 'subway',
-    name: 'Subway',
-    transactionType: 'expense',
-    parentKey: 'transport',
-    description: 'Metro or subway rides and monthly passes.',
-    order: 1,
-  },
-  {
-    key: 'plane',
-    name: 'Plane',
-    transactionType: 'expense',
-    parentKey: 'transport',
-    description: 'Flight tickets for business or leisure.',
-    order: 2,
-  },
-  {
-    key: 'taxi',
-    name: 'Taxi',
-    transactionType: 'expense',
-    parentKey: 'transport',
-    description: 'Taxi rides and local on-demand transport.',
-    order: 3,
   },
 ];
 
