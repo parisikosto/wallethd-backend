@@ -1,10 +1,7 @@
 const slugify = require('slugify');
 
 const { defaultAccountsNames } = require('../config/accounts');
-const {
-  mainCategories,
-  subCategories,
-} = require('../config/defaultCategories');
+const { mainCategories, subCategories } = require('../config/categories');
 const Account = require('../models/Account');
 const Category = require('../models/Category');
 const Settings = require('../models/Settings');
