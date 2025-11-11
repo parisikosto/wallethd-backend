@@ -28,8 +28,26 @@ const categories = JSON.parse(
 const settings = JSON.parse(
   fs.readFileSync(`${__dirname}/settings.json`, 'utf-8'),
 );
+const transactionsBobRent = JSON.parse(
+  fs.readFileSync(`${__dirname}/transactionsBobRent.json`, 'utf-8'),
+);
+const transactionsBobSalary = JSON.parse(
+  fs.readFileSync(`${__dirname}/transactionsBobSalary.json`, 'utf-8'),
+);
+const transactionsJaneRent = JSON.parse(
+  fs.readFileSync(`${__dirname}/transactionsJaneRent.json`, 'utf-8'),
+);
+const transactionsJaneSalary = JSON.parse(
+  fs.readFileSync(`${__dirname}/transactionsJaneSalary.json`, 'utf-8'),
+);
 const transactionsJohnSalary = JSON.parse(
   fs.readFileSync(`${__dirname}/transactionsJohnSalary.json`, 'utf-8'),
+);
+const transactionsMikeRent = JSON.parse(
+  fs.readFileSync(`${__dirname}/transactionsMikeRent.json`, 'utf-8'),
+);
+const transactionsMikeSalary = JSON.parse(
+  fs.readFileSync(`${__dirname}/transactionsMikeSalary.json`, 'utf-8'),
 );
 const transactionsParisElectricityBill = JSON.parse(
   fs.readFileSync(
@@ -61,7 +79,13 @@ const importData = async () => {
     await Category.insertMany(categories);
     await Settings.create(settings);
     await Transaction.insertMany([
+      ...transactionsBobRent,
+      ...transactionsBobSalary,
+      ...transactionsJaneRent,
+      ...transactionsJaneSalary,
       ...transactionsJohnSalary,
+      ...transactionsMikeRent,
+      ...transactionsMikeSalary,
       ...transactionsParisElectricityBill,
       ...transactionsParisExpenses,
       ...transactionsParisInstallments,
