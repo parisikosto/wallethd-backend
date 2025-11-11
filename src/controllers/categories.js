@@ -17,7 +17,10 @@ const getCategories = asyncHandler(async (_, res) => {
  * @access  Private
  */
 const getSingleCategory = asyncHandler(async (req, res, next) => {
-  const category = await Category.findById(req.params.id);
+  const category = await Category.findOne({
+    _id: req.params.id,
+    user: req.user.id,
+  });
 
   if (!category) {
     return next(
@@ -36,7 +39,6 @@ const getSingleCategory = asyncHandler(async (req, res, next) => {
 const createCategory = asyncHandler(async (req, res, next) => {
   const { name, transactionType, parent, description } = req.body;
 
-  let parentId = null;
   if (parent) {
     const foundParentCategory = await Category.findOne({
       _id: parent,
@@ -48,15 +50,13 @@ const createCategory = asyncHandler(async (req, res, next) => {
         new ErrorResponse(`Parent category with id ${parent} not found`, 404),
       );
     }
-
-    parentId = foundParentCategory._id;
   }
 
   const category = await Category.create({
     user: req.user.id,
     name,
     transactionType,
-    parent: parentId,
+    parent: parent || null,
     description,
   });
 
