@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
 
+const { transactionTypes } = require('../config/transactions');
+
 const CategorySchema = new mongoose.Schema(
   {
     name: {
@@ -16,7 +18,7 @@ const CategorySchema = new mongoose.Schema(
     transactionType: {
       type: String,
       required: [true, 'Please add a transaction type'],
-      enum: ['income', 'expense'],
+      enum: transactionTypes,
     },
     parent: {
       type: mongoose.Schema.Types.ObjectId,
