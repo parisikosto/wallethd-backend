@@ -3,6 +3,7 @@ require('dotenv').config();
 
 // third party libs
 require('colors');
+const cors = require('cors');
 const express = require('express');
 const morgan = require('morgan');
 
@@ -19,9 +20,10 @@ connectDB();
 // express application
 const app = express();
 
+// allow cross origin requests
+app.use(cors());
 // nested query parameters configuration
 app.set('query parser', 'extended');
-
 // body parser
 app.use(express.json());
 
