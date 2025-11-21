@@ -44,12 +44,16 @@ const advancedResults =
 
     // pagination
     const page = parseInt(req.query.page, 10) || 1;
-    const limit = parseInt(req.query.limit, 10) || 100;
-    const startIndex = (page - 1) * limit;
-    const endIndex = page * limit;
+    const limit = req.query.limit ? parseInt(req.query.limit, 10) : undefined;
     const total = await model.countDocuments(JSON.parse(queryStr));
 
-    query = query.skip(startIndex).limit(limit);
+    let startIndex, endIndex;
+
+    if (limit) {
+      startIndex = (page - 1) * limit;
+      endIndex = page * limit;
+      query = query.skip(startIndex).limit(limit);
+    }
 
     if (populate) {
       query = query.populate(populate);
@@ -61,23 +65,25 @@ const advancedResults =
     // pagination result
     const pagination = {};
 
-    if (endIndex < total) {
-      pagination.next = {
-        page: page + 1,
-        limit,
-      };
-    }
+    if (limit) {
+      if (endIndex < total) {
+        pagination.next = {
+          page: page + 1,
+          limit,
+        };
+      }
 
-    if (startIndex > 0) {
-      pagination.prev = {
-        page: page - 1,
-        limit,
-      };
+      if (startIndex > 0) {
+        pagination.prev = {
+          page: page - 1,
+          limit,
+        };
+      }
     }
 
     res.advancedResults = {
       success: true,
-      count: results.length,
+      count: total,
       pagination,
       data: results,
     };
