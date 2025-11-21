@@ -6,6 +6,7 @@ const {
   createTransaction,
   updateTransaction,
   deleteTransaction,
+  getTransactionsSummary,
 } = require('../../controllers/transactions');
 const { privateAdvancedResults } = require('../../middleware/advancedResults');
 const { authenticate } = require('../../middleware/auth');
@@ -19,6 +20,8 @@ router
   .route('/')
   .get(privateAdvancedResults(Transaction), getTransactions)
   .post(createTransaction);
+
+router.route('/summary').get(getTransactionsSummary);
 
 router.route('/:id').get(getSingleTransaction).put(updateTransaction);
 

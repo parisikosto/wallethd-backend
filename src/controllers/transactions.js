@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const { asyncHandler } = require('../middleware/asyncHandler');
 const Transaction = require('../models/Transaction');
 const { ErrorResponse } = require('../utils/errorResponse');
@@ -109,10 +111,84 @@ const deleteTransaction = asyncHandler(async (req, res, next) => {
   res.status(200).json({ success: true, data: {} });
 });
 
+/**
+ * @desc    Get transactions summary
+ * @route   GET /v1/transactions/summary
+ * @access  Private
+ */
+const getTransactionsSummary = asyncHandler(async (req, res, next) => {
+  const { year } = req.query;
+
+  const matchStage = {
+    user: mongoose.Types.ObjectId.createFromHexString(req.user.id),
+  };
+
+  if (year) {
+    const yearNum = parseInt(year, 10);
+    if (isNaN(yearNum) || yearNum < 1900 || yearNum > 2100) {
+      return next(new ErrorResponse('Invalid year parameter', 400));
+    }
+
+    matchStage.date = {
+      $gte: new Date(`${yearNum}-01-01`),
+      $lt: new Date(`${yearNum + 1}-01-01`),
+    };
+  }
+
+  const summary = await Transaction.aggregate([
+    { $match: matchStage },
+    {
+      $group: {
+        _id: {
+          type: '$type',
+          status: '$status',
+        },
+        total: { $sum: '$amount' },
+      },
+    },
+  ]);
+
+  const results = {
+    totalIncome: 0,
+    completedIncome: 0,
+    pendingIncome: 0,
+    totalExpenses: 0,
+    completedExpenses: 0,
+    pendingExpenses: 0,
+  };
+
+  summary.forEach((item) => {
+    const { type, status } = item._id;
+    const amount = item.total;
+
+    if (type === 'income') {
+      results.totalIncome += amount;
+      if (status === 'completed') {
+        results.completedIncome = amount;
+      } else if (status === 'pending') {
+        results.pendingIncome = amount;
+      }
+    } else if (type === 'expense') {
+      results.totalExpenses += amount;
+      if (status === 'completed') {
+        results.completedExpenses = amount;
+      } else if (status === 'pending') {
+        results.pendingExpenses = amount;
+      }
+    }
+  });
+
+  res.status(200).json({
+    success: true,
+    data: results,
+  });
+});
+
 module.exports = {
   getTransactions,
   getSingleTransaction,
   createTransaction,
   updateTransaction,
   deleteTransaction,
+  getTransactionsSummary,
 };

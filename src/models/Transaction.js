@@ -33,6 +33,7 @@ const TransactionSchema = new mongoose.Schema(
     },
     note: {
       type: String,
+      required: [true, 'Please add a transaction note'],
       maxlength: [50, 'Note can not be more than 50 characters'],
       trim: true,
     },
