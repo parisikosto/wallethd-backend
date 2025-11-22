@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
 
+const { supportedCurrencies } = require('../config/transactions');
+
 const SettingsSchema = new mongoose.Schema(
   {
     defaultCurrency: {
       type: String,
+      enum: supportedCurrencies,
       default: 'EUR',
     },
     firstDayOfMonth: {

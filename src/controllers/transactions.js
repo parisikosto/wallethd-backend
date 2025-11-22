@@ -1,8 +1,18 @@
 const mongoose = require('mongoose');
 
 const { asyncHandler } = require('../middleware/asyncHandler');
+const Settings = require('../models/Settings');
 const Transaction = require('../models/Transaction');
+const { toSmallestUnit } = require('../utils/currency');
 const { ErrorResponse } = require('../utils/errorResponse');
+
+/**
+ * Helper function to get user's currency from settings
+ */
+async function getUserCurrency(userId) {
+  const settings = await Settings.findOne({ user: userId });
+  return settings?.defaultCurrency || 'EUR';
+}
 
 /**
  * @desc    Get transactions
@@ -38,10 +48,22 @@ const getSingleTransaction = asyncHandler(async (req, res, next) => {
  * @route   POST /v1/transactions
  * @access  Private
  */
-const createTransaction = asyncHandler(async (req, res) => {
+const createTransaction = asyncHandler(async (req, res, next) => {
   req.body.user = req.user.id;
+
+  if (req.body.amount !== undefined) {
+    const decimalAmount = parseFloat(req.body.amount);
+    if (isNaN(decimalAmount)) {
+      return next(new ErrorResponse('Invalid amount value', 400));
+    }
+
+    const currency = await getUserCurrency(req.user.id);
+    req.body.amount = toSmallestUnit(decimalAmount, currency);
+  }
+
   const transaction = await Transaction.create(req.body);
   await transaction.populateDefault();
+
   res.status(201).json({ success: true, data: transaction });
 });
 
@@ -60,6 +82,16 @@ const updateTransaction = asyncHandler(async (req, res, next) => {
     return next(
       new ErrorResponse(`Transaction with id ${req.params.id} not found`, 404),
     );
+  }
+
+  if (req.body.amount !== undefined) {
+    const decimalAmount = parseFloat(req.body.amount);
+    if (isNaN(decimalAmount)) {
+      return next(new ErrorResponse('Invalid amount value', 400));
+    }
+
+    const currency = await getUserCurrency(req.user.id);
+    req.body.amount = toSmallestUnit(decimalAmount, currency);
   }
 
   const updatableFields = [

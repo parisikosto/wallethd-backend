@@ -24,6 +24,10 @@ const TransactionSchema = new mongoose.Schema(
       type: Number,
       required: [true, 'Please add an amount'],
       min: [0, 'Amount must be a positive number'],
+      validate: {
+        validator: Number.isInteger,
+        message: 'Amount must be an integer (smallest currency unit)',
+      },
     },
     status: {
       type: String,
@@ -89,8 +93,17 @@ const TransactionSchema = new mongoose.Schema(
       index: true,
     },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  },
 );
+
+// virtual field: convert amount from smallest unit to decimal
+TransactionSchema.virtual('amountDecimal').get(function () {
+  return this.amount / 100;
+});
 
 // compound index for common queries (user + date)
 TransactionSchema.index({ user: 1, date: -1 });

@@ -2,4 +2,10 @@ const transactionTypes = ['income', 'expense'];
 
 const transactionStatuses = ['pending', 'completed'];
 
-module.exports = { transactionTypes, transactionStatuses };
+const supportedCurrencies = ['USD', 'EUR', 'GBP'];
+
+module.exports = {
+  transactionTypes,
+  transactionStatuses,
+  supportedCurrencies,
+};
