@@ -212,6 +212,10 @@ const getTransactionsSummary = asyncHandler(async (req, res, next) => {
     }
   });
 
+  Object.keys(results).forEach((key) => {
+    results[key] = results[key] / 100;
+  });
+
   res.status(200).json({
     success: true,
     data: results,
