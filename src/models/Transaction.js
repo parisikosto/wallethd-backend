@@ -98,6 +98,26 @@ TransactionSchema.index({ user: 1, date: -1 });
 // fast filter by user + type
 TransactionSchema.index({ user: 1, type: 1, date: -1 });
 
+// static method for default population
+TransactionSchema.statics.getPopulateOptions = function () {
+  return [
+    { path: 'account', select: 'name' },
+    {
+      path: 'category',
+      select: 'name parent',
+      populate: {
+        path: 'parent',
+        select: 'name',
+      },
+    },
+  ];
+};
+
+// helper method to populate a transaction instance
+TransactionSchema.methods.populateDefault = function () {
+  return this.populate(TransactionSchema.statics.getPopulateOptions());
+};
+
 module.exports = mongoose.model(
   'Transaction',
   TransactionSchema,

@@ -18,7 +18,10 @@ router.use(authenticate);
 
 router
   .route('/')
-  .get(privateAdvancedResults(Transaction), getTransactions)
+  .get(
+    privateAdvancedResults(Transaction, Transaction.getPopulateOptions()),
+    getTransactions,
+  )
   .post(createTransaction);
 
 router.route('/summary').get(getTransactionsSummary);

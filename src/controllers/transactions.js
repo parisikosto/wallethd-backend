@@ -22,7 +22,7 @@ const getSingleTransaction = asyncHandler(async (req, res, next) => {
   const transaction = await Transaction.findOne({
     _id: req.params.id,
     user: req.user.id,
-  });
+  }).populate(Transaction.getPopulateOptions());
 
   if (!transaction) {
     return next(
@@ -41,6 +41,7 @@ const getSingleTransaction = asyncHandler(async (req, res, next) => {
 const createTransaction = asyncHandler(async (req, res) => {
   req.body.user = req.user.id;
   const transaction = await Transaction.create(req.body);
+  await transaction.populateDefault();
   res.status(201).json({ success: true, data: transaction });
 });
 
@@ -87,6 +88,7 @@ const updateTransaction = asyncHandler(async (req, res, next) => {
   });
 
   await transaction.save();
+  await transaction.populateDefault();
 
   res.status(200).json({ success: true, data: transaction });
 });

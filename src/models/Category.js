@@ -50,6 +50,18 @@ const CategorySchema = new mongoose.Schema(
   { timestamps: true },
 );
 
+// virtual field to get children categories
+CategorySchema.virtual('children', {
+  ref: 'Category',
+  localField: '_id',
+  foreignField: 'parent',
+  justOne: false,
+});
+
+// ensure virtuals are included in JSON output
+CategorySchema.set('toJSON', { virtuals: true });
+CategorySchema.set('toObject', { virtuals: true });
+
 // generate slug from name
 CategorySchema.pre('save', function (next) {
   if (this.isModified('name') && this.name) {
