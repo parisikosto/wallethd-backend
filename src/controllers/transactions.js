@@ -146,6 +146,96 @@ const deleteTransaction = asyncHandler(async (req, res, next) => {
 });
 
 /**
+ * @desc    Get transactions for a year grouped by month
+ * @route   GET /v1/transactions/monthly
+ * @access  Private
+ */
+const getTransactionsByMonth = asyncHandler(async (req, res, next) => {
+  const { year } = req.query;
+  const currentYear = new Date().getFullYear();
+  const yearNum = year ? parseInt(year, 10) : currentYear;
+
+  if (isNaN(yearNum) || yearNum < 1900 || yearNum > 2100) {
+    return next(new ErrorResponse('Invalid year parameter', 400));
+  }
+
+  const matchStage = {
+    user: mongoose.Types.ObjectId.createFromHexString(req.user.id),
+    date: {
+      $gte: new Date(`${yearNum}-01-01`),
+      $lt: new Date(`${yearNum + 1}-01-01`),
+    },
+  };
+
+  const transactions = await Transaction.find(matchStage)
+    .populate(Transaction.getPopulateOptions())
+    .sort({ date: 1 });
+
+  const monthlyData = Array.from({ length: 12 }, () => ({
+    expenses: [],
+    incomes: [],
+  }));
+
+  transactions.forEach((transaction) => {
+    const transactionDate = new Date(transaction.date);
+    const monthIndex = transactionDate.getMonth();
+
+    if (monthIndex >= 0 && monthIndex < 12) {
+      const monthData = monthlyData[monthIndex];
+      const transactionObj = transaction.toObject();
+
+      transactionObj.amountDecimal = transactionObj.amount / 100;
+
+      if (transaction.type === 'income') {
+        monthData.incomes.push(transactionObj);
+      } else if (transaction.type === 'expense') {
+        monthData.expenses.push(transactionObj);
+      }
+    }
+  });
+
+  monthlyData.forEach((monthData) => {
+    monthData.incomes.sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+    );
+    monthData.expenses.sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+    );
+
+    const totalIncome = monthData.incomes.reduce(
+      (sum, t) => sum + t.amountDecimal,
+      0,
+    );
+    const totalExpenses = monthData.expenses.reduce(
+      (sum, t) => sum + t.amountDecimal,
+      0,
+    );
+
+    const budgetForNecessities = totalIncome * 0.5;
+    const wantsBudget = totalIncome * 0.3;
+    const expectedSavings = totalIncome * 0.2;
+
+    const isOverBudget = totalExpenses > budgetForNecessities;
+    const actualSavings = totalIncome - totalExpenses - wantsBudget;
+    const isOnTrack = actualSavings >= expectedSavings;
+
+    monthData.totalIncome = totalIncome;
+    monthData.totalExpenses = totalExpenses;
+    monthData.budgetForNecessities = budgetForNecessities;
+    monthData.wantsBudget = wantsBudget;
+    monthData.expectedSavings = expectedSavings;
+    monthData.isOverBudget = isOverBudget;
+    monthData.actualSavings = actualSavings;
+    monthData.isOnTrack = isOnTrack;
+  });
+
+  res.status(200).json({
+    success: true,
+    data: monthlyData,
+  });
+});
+
+/**
  * @desc    Get transactions summary
  * @route   GET /v1/transactions/summary
  * @access  Private
@@ -228,5 +318,6 @@ module.exports = {
   createTransaction,
   updateTransaction,
   deleteTransaction,
+  getTransactionsByMonth,
   getTransactionsSummary,
 };

@@ -6,6 +6,7 @@ const {
   createTransaction,
   updateTransaction,
   deleteTransaction,
+  getTransactionsByMonth,
   getTransactionsSummary,
 } = require('../../controllers/transactions');
 const { privateAdvancedResults } = require('../../middleware/advancedResults');
@@ -23,6 +24,8 @@ router
     getTransactions,
   )
   .post(createTransaction);
+
+router.route('/monthly').get(getTransactionsByMonth);
 
 router.route('/summary').get(getTransactionsSummary);
 
