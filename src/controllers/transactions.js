@@ -97,6 +97,7 @@ const updateTransaction = asyncHandler(async (req, res, next) => {
   const updatableFields = [
     'type',
     'date',
+    'issueDate',
     'dueDate',
     'reminderDate',
     'amount',

@@ -18,6 +18,7 @@ const TransactionSchema = new mongoose.Schema(
       required: [true, 'Please add a transaction date'],
       index: true,
     },
+    issueDate: Date,
     dueDate: Date,
     reminderDate: Date,
     amount: {
@@ -77,7 +78,7 @@ const TransactionSchema = new mongoose.Schema(
     account: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Account',
-      default: null,
+      required: true,
       index: true,
     },
     category: {
