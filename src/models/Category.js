@@ -84,4 +84,18 @@ CategorySchema.index(
 CategorySchema.index({ user: 1, transactionType: 1 });
 CategorySchema.index({ user: 1, isArchived: 1 });
 
+// static method for default population
+CategorySchema.statics.getPopulateOptions = function () {
+  return [
+    {
+      path: 'parent',
+      select: 'name slug transactionType description isArchived order',
+      populate: {
+        path: 'parent',
+        select: 'name slug transactionType description isArchived order',
+      },
+    },
+  ];
+};
+
 module.exports = mongoose.model('Category', CategorySchema, 'categories');

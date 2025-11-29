@@ -20,7 +20,7 @@ const getSingleCategory = asyncHandler(async (req, res, next) => {
   const category = await Category.findOne({
     _id: req.params.id,
     user: req.user.id,
-  });
+  }).populate(Category.getPopulateOptions());
 
   if (!category) {
     return next(

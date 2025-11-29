@@ -190,12 +190,20 @@ const subCategories = [
     order: 1,
   },
   {
+    key: 'supermarket',
+    name: 'Supermarket',
+    transactionType: 'expense',
+    parentKey: 'food',
+    description: 'Groceries and other items bought from supermarkets.',
+    order: 2,
+  },
+  {
     key: 'supplements',
     name: 'Supplements',
     transactionType: 'expense',
     parentKey: 'food',
     description: 'Vitamins, minerals, and other supplements for daily use.',
-    order: 2,
+    order: 3,
   },
   {
     key: 'eating-out',
@@ -203,7 +211,7 @@ const subCategories = [
     transactionType: 'expense',
     parentKey: 'food',
     description: 'Casual dining, takeaway, or fast food outside the home.',
-    order: 3,
+    order: 4,
   },
   {
     key: 'beverages',
@@ -211,7 +219,7 @@ const subCategories = [
     transactionType: 'expense',
     parentKey: 'food',
     description: 'Coffee, tea, juices, soft drinks, and similar.',
-    order: 4,
+    order: 5,
   },
   // FITNESS & WELLNESS
   {

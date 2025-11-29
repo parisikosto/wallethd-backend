@@ -19,7 +19,10 @@ router.use(authenticate);
 
 router
   .route('/')
-  .get(privateAdvancedResults(Category), getCategories)
+  .get(
+    privateAdvancedResults(Category, Category.getPopulateOptions()),
+    getCategories,
+  )
   .post(createCategory);
 
 router.route('/:id').get(getSingleCategory).put(updateCategory);
