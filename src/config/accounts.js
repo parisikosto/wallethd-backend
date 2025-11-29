@@ -1,11 +1,12 @@
 const defaultAccountsNames = [
   'Cash',
   'Revolut',
-  'Ticket Restaurant',
-  'Ticket Compliment Card',
+  'Payzy',
+  'Bank Account',
   'Debit Card',
   'Credit Card',
-  'Bank Account',
+  'Ticket Restaurant',
+  'Ticket Compliment Card',
 ];
 
 module.exports = { defaultAccountsNames };
