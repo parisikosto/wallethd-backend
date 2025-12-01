@@ -35,7 +35,7 @@ const mainCategories = [
     name: 'Petty Cash',
     transactionType: 'income',
     description:
-      'Small incoming amounts used for day-to-day spending or reimbursements.',
+      'Small reimbursements or cash inflows used for day-to-day spending, such as money returned from work or business trips.',
     order: 4,
   },
   {
@@ -47,12 +47,20 @@ const mainCategories = [
     order: 5,
   },
   {
+    key: 'loan',
+    name: 'Loan',
+    transactionType: 'income',
+    description:
+      'Money received from loans or credit (borrowed funds that will be repaid in the future).',
+    order: 6,
+  },
+  {
     key: 'other',
     name: 'Other',
     transactionType: 'income',
     description:
       'Income that doesn’t fit any other category, such as gifts, refunds, or one-off payments.',
-    order: 6,
+    order: 7,
   },
   // EXPENSES
   {
@@ -71,42 +79,12 @@ const mainCategories = [
     order: 1,
   },
   {
-    key: 'household',
-    name: 'Household',
-    transactionType: 'expense',
-    description:
-      'Expenses related to operating and maintaining the home, including rent and supplies.',
-    order: 2,
-  },
-  {
-    key: 'utilities',
-    name: 'Utilities',
-    transactionType: 'expense',
-    description:
-      'Recurring, essential bills for running the household such as water, electricity, and internet.',
-    order: 3,
-  },
-  {
-    key: 'devices',
-    name: 'Devices',
-    transactionType: 'expense',
-    description: 'Devices and electronics for daily use.',
-    order: 4,
-  },
-  {
-    key: 'vehicles',
-    name: 'Vehicles',
-    transactionType: 'expense',
-    description: 'Expenses for owning, operating, and maintaining any vehicle.',
-    order: 5,
-  },
-  {
     key: 'apparel',
     name: 'Apparel',
     transactionType: 'expense',
     description:
       'Clothing, shoes, and wearables for daily use or special occasions.',
-    order: 6,
+    order: 2,
   },
   {
     key: 'health',
@@ -114,15 +92,38 @@ const mainCategories = [
     transactionType: 'expense',
     description:
       'Medical expenses, medications, insurance, and health treatments.',
-    order: 7,
+    order: 3,
   },
   {
-    key: 'transport',
-    name: 'Transport',
+    key: 'household',
+    name: 'Household',
     transactionType: 'expense',
     description:
-      'Public or private transport costs for commuting or travel inside the city.',
-    order: 8,
+      'Expenses related to operating and maintaining the home, including rent and supplies.',
+    order: 4,
+  },
+  {
+    key: 'utilities',
+    name: 'Utilities',
+    transactionType: 'expense',
+    description:
+      'Recurring, essential bills for running the household such as water, electricity, and internet.',
+    order: 5,
+  },
+  {
+    key: 'vehicles',
+    name: 'Vehicles',
+    transactionType: 'expense',
+    description: 'Expenses for owning, operating, and maintaining any vehicle.',
+    order: 6,
+  },
+  {
+    key: 'financial-services',
+    name: 'Financial Services',
+    transactionType: 'expense',
+    description:
+      'Expenses related to loans, banking services, credit cards, accountant fees, and other financial obligations.',
+    order: 7,
   },
   {
     key: 'culture',
@@ -130,7 +131,7 @@ const mainCategories = [
     transactionType: 'expense',
     description:
       'Spending on books, movies, music, apps, or cultural experiences.',
-    order: 9,
+    order: 8,
   },
   {
     key: 'social-life',
@@ -138,28 +139,43 @@ const mainCategories = [
     transactionType: 'expense',
     description:
       'Expenses for hanging out with friends, gatherings, clubs, and social activities.',
+    order: 9,
+  },
+  {
+    key: 'devices',
+    name: 'Devices',
+    transactionType: 'expense',
+    description: 'Devices and electronics for daily use.',
     order: 10,
-  },
-  {
-    key: 'beauty',
-    name: 'Beauty',
-    transactionType: 'expense',
-    description: 'Cosmetics, personal care, salon, spa, and grooming services.',
-    order: 11,
-  },
-  {
-    key: 'education',
-    name: 'Education',
-    transactionType: 'expense',
-    description: 'Schooling, courses, and any learning-related spending.',
-    order: 12,
   },
   {
     key: 'gift',
     name: 'Gift',
     transactionType: 'expense',
     description: 'Presents, donations, or money you spend to give to others.',
+    order: 11,
+  },
+  {
+    key: 'beauty',
+    name: 'Beauty',
+    transactionType: 'expense',
+    description: 'Cosmetics, personal care, salon, spa, and grooming services.',
+    order: 12,
+  },
+  {
+    key: 'education',
+    name: 'Education',
+    transactionType: 'expense',
+    description: 'Schooling, courses, and any learning-related spending.',
     order: 13,
+  },
+  {
+    key: 'transport',
+    name: 'Transport',
+    transactionType: 'expense',
+    description:
+      'Public or private transport costs for daily commuting or longer-distance travel.',
+    order: 14,
   },
   {
     key: 'pets',
@@ -167,7 +183,7 @@ const mainCategories = [
     transactionType: 'expense',
     description:
       'Costs related to pet care, food, grooming, and veterinary services.',
-    order: 14,
+    order: 15,
   },
 ];
 
@@ -202,7 +218,8 @@ const subCategories = [
     name: 'Supplements',
     transactionType: 'expense',
     parentKey: 'food',
-    description: 'Vitamins, minerals, and other supplements for daily use.',
+    description:
+      'Nutrition supplements such as protein, creatine, sports supplements, and similar.',
     order: 3,
   },
   {
@@ -232,13 +249,40 @@ const subCategories = [
     order: 0,
   },
   {
+    key: 'fitness-class',
+    name: 'Fitness Class',
+    transactionType: 'expense',
+    parentKey: 'fitness-wellness',
+    description:
+      'Group workouts like HIIT, cross-training, dance fitness, or bootcamps.',
+    order: 1,
+  },
+  {
+    key: 'sports-activities',
+    name: 'Sports Activities',
+    transactionType: 'expense',
+    parentKey: 'fitness-wellness',
+    description:
+      'Sports and outdoor activities such as skiing, snowboarding, race events, or similar experiences.',
+    order: 2,
+  },
+  {
+    key: 'sports-equipment',
+    name: 'Sports Equipment',
+    transactionType: 'expense',
+    parentKey: 'fitness-wellness',
+    description:
+      'Equipment for sports and outdoor activities such as spearfishing or skiing.',
+    order: 3,
+  },
+  {
     key: 'yoga-class',
     name: 'Yoga Class',
     transactionType: 'expense',
     parentKey: 'fitness-wellness',
     description:
       'Payments for yoga classes, drop-ins, or online yoga platforms.',
-    order: 1,
+    order: 4,
   },
   {
     key: 'pilates-class',
@@ -246,16 +290,7 @@ const subCategories = [
     transactionType: 'expense',
     parentKey: 'fitness-wellness',
     description: 'Mat or reformer pilates classes, either in studio or online.',
-    order: 2,
-  },
-  {
-    key: 'fitness-class',
-    name: 'Fitness Class',
-    transactionType: 'expense',
-    parentKey: 'fitness-wellness',
-    description:
-      'Group workouts like HIIT, cross-training, dance fitness, or bootcamps.',
-    order: 3,
+    order: 5,
   },
   {
     key: 'sports-club',
@@ -264,7 +299,86 @@ const subCategories = [
     parentKey: 'fitness-wellness',
     description:
       'Membership or participation fees for sports clubs (football, basketball, tennis).',
+    order: 6,
+  },
+  // APPAREL
+  {
+    key: 'clothing',
+    name: 'Clothing',
+    transactionType: 'expense',
+    parentKey: 'apparel',
+    description:
+      'Everyday clothing purchases such as shirts, trousers, jackets.',
+    order: 0,
+  },
+  {
+    key: 'shoes',
+    name: 'Shoes',
+    transactionType: 'expense',
+    parentKey: 'apparel',
+    description: 'Shoes, boots, and footwear for work, sports, or leisure.',
+    order: 1,
+  },
+  {
+    key: 'sportswear',
+    name: 'Sportswear',
+    transactionType: 'expense',
+    parentKey: 'apparel',
+    description:
+      'Activewear and gym clothing such as leggings, shorts, and training tops.',
+    order: 2,
+  },
+  {
+    key: 'underwear-socks',
+    name: 'Underwear & Socks',
+    transactionType: 'expense',
+    parentKey: 'apparel',
+    description: 'Underwear, socks, tights, and other base layers.',
+    order: 3,
+  },
+  {
+    key: 'outerwear',
+    name: 'Outerwear',
+    transactionType: 'expense',
+    parentKey: 'apparel',
+    description:
+      'Coats, jackets, rainwear, and other weather-appropriate outer layers.',
     order: 4,
+  },
+  // HEALTH
+  {
+    key: 'medical-services',
+    name: 'Medical Services',
+    transactionType: 'expense',
+    parentKey: 'health',
+    description:
+      'Doctor appointments, check-ups, lab tests, or specialist consultations.',
+    order: 0,
+  },
+  {
+    key: 'medicines',
+    name: 'Medicines',
+    transactionType: 'expense',
+    parentKey: 'health',
+    description: 'Prescription drugs and over-the-counter medicines.',
+    order: 1,
+  },
+  {
+    key: 'health-general',
+    name: 'Health (General)',
+    transactionType: 'expense',
+    parentKey: 'health',
+    description:
+      'General health-related spending that doesn’t fit other health subcategories.',
+    order: 2,
+  },
+  {
+    key: 'medical-insurance',
+    name: 'Medical Insurance',
+    transactionType: 'expense',
+    parentKey: 'health',
+    description: 'Health or medical insurance premiums.',
+    order: 3,
   },
   // HOUSEHOLD
   {
@@ -358,6 +472,159 @@ const subCategories = [
     description: 'Common charges for the apartment or building.',
     order: 3,
   },
+  // VEHICLES
+  {
+    key: 'fuel',
+    name: 'Fuel',
+    transactionType: 'expense',
+    parentKey: 'vehicles',
+    description: 'Petrol, diesel, gas, or EV charging for vehicles.',
+    order: 0,
+  },
+  {
+    key: 'service',
+    name: 'Service',
+    transactionType: 'expense',
+    parentKey: 'vehicles',
+    description:
+      'Full vehicle service or larger repairs done by professionals.',
+    order: 1,
+  },
+  {
+    key: 'maintenance',
+    name: 'Maintenance',
+    transactionType: 'expense',
+    parentKey: 'vehicles',
+    description:
+      'Routine checks, tyre changes, oil, and small repairs for vehicles.',
+    order: 2,
+  },
+  {
+    key: 'tolls-parking',
+    name: 'Tolls & Parking',
+    transactionType: 'expense',
+    parentKey: 'vehicles',
+    description: 'Tolls, bridges, parking, and similar road charges.',
+    order: 3,
+  },
+  {
+    key: 'vehicle-upgrades',
+    name: 'Vehicle Upgrades',
+    transactionType: 'expense',
+    parentKey: 'vehicles',
+    description:
+      'Car paint jobs, audio systems, cameras, GPS and other upgrades.',
+    order: 4,
+  },
+  {
+    key: 'vehicle-legal-insurance',
+    name: 'Insurance & Legal',
+    transactionType: 'expense',
+    parentKey: 'vehicles',
+    description:
+      'Road tax, insurance, vehicle inspection, emissions tests and similar.',
+    order: 5,
+  },
+  // FINANCIAL SERVICES
+  {
+    key: 'loan-payment',
+    name: 'Loan Payment',
+    transactionType: 'expense',
+    parentKey: 'financial-services',
+    description: 'Monthly repayments of any kind of loan.',
+    order: 0,
+  },
+  {
+    key: 'credit-card-fee',
+    name: 'Credit Card Fee',
+    transactionType: 'expense',
+    parentKey: 'financial-services',
+    description: 'Annual and recurring fees for credit cards.',
+    order: 1,
+  },
+  {
+    key: 'bank-fees',
+    name: 'Bank Fees',
+    transactionType: 'expense',
+    parentKey: 'financial-services',
+    description: 'Account maintenance fees and other bank charges.',
+    order: 2,
+  },
+  {
+    key: 'accountant',
+    name: 'Accountant',
+    transactionType: 'expense',
+    parentKey: 'financial-services',
+    description: 'Payments to your accountant or tax professional.',
+    order: 3,
+  },
+  // CULTURE
+  {
+    key: 'apps',
+    name: 'Apps',
+    transactionType: 'expense',
+    parentKey: 'culture',
+    description: 'Mobile or desktop app purchases and subscriptions.',
+    order: 0,
+  },
+  {
+    key: 'music',
+    name: 'Music',
+    transactionType: 'expense',
+    parentKey: 'culture',
+    description: 'Music subscriptions, albums, or instruments.',
+    order: 1,
+  },
+  {
+    key: 'streaming-services',
+    name: 'Streaming Services',
+    transactionType: 'expense',
+    parentKey: 'culture',
+    description: 'Subscriptions to online video or TV streaming platforms.',
+    order: 2,
+  },
+  {
+    key: 'movies',
+    name: 'Movies',
+    transactionType: 'expense',
+    parentKey: 'culture',
+    description: 'Cinema tickets or movie rentals.',
+    order: 3,
+  },
+  {
+    key: 'books',
+    name: 'Books',
+    transactionType: 'expense',
+    parentKey: 'culture',
+    description: 'Printed or digital books for leisure or learning.',
+    order: 4,
+  },
+  // SOCIAL LIFE
+  {
+    key: 'friend',
+    name: 'Friend',
+    transactionType: 'expense',
+    parentKey: 'social-life',
+    description: 'Expenses when meeting friends or going out with them.',
+    order: 0,
+  },
+  {
+    key: 'fellowship',
+    name: 'Fellowship',
+    transactionType: 'expense',
+    parentKey: 'social-life',
+    description: 'Small group, community, or church/social circle gatherings.',
+    order: 1,
+  },
+  {
+    key: 'trips-holidays',
+    name: 'Trips & Holidays',
+    transactionType: 'expense',
+    parentKey: 'social-life',
+    description:
+      'Expenses for trips, vacations, and getaways, including accommodation, transportation, activities, and related costs.',
+    order: 2,
+  },
   // DEVICES
   {
     key: 'mobile',
@@ -415,94 +682,72 @@ const subCategories = [
     description: 'Various electronic gadgets and accessories.',
     order: 6,
   },
-  // VEHICLES
+  // BEAUTY
   {
-    key: 'fuel',
-    name: 'Fuel',
+    key: 'cosmetics',
+    name: 'Cosmetics',
     transactionType: 'expense',
-    parentKey: 'vehicles',
-    description: 'Petrol, diesel, gas, or EV charging for vehicles.',
+    parentKey: 'beauty',
+    description: 'Makeup, skincare, and personal beauty products.',
     order: 0,
   },
   {
-    key: 'service',
-    name: 'Service',
+    key: 'accessories',
+    name: 'Accessories',
     transactionType: 'expense',
-    parentKey: 'vehicles',
-    description:
-      'Full vehicle service or larger repairs done by professionals.',
+    parentKey: 'beauty',
+    description: 'Beauty accessories, jewelry, hair accessories.',
     order: 1,
   },
   {
-    key: 'maintenance',
-    name: 'Maintenance',
+    key: 'beauty-services',
+    name: 'Beauty Services',
     transactionType: 'expense',
-    parentKey: 'vehicles',
+    parentKey: 'beauty',
     description:
-      'Routine checks, tyre changes, oil, and small repairs for vehicles.',
+      'Hairdresser, barber, spa, manicure/pedicure, or facial treatments.',
     order: 2,
   },
-  // APPAREL
+  // EDUCATION
   {
-    key: 'clothing',
-    name: 'Clothing',
+    key: 'schooling',
+    name: 'Schooling',
     transactionType: 'expense',
-    parentKey: 'apparel',
-    description:
-      'Everyday clothing purchases such as shirts, trousers, jackets.',
+    parentKey: 'education',
+    description: 'General school or university fees.',
     order: 0,
   },
   {
-    key: 'fashion',
-    name: 'Fashion',
+    key: 'textbooks',
+    name: 'Textbooks',
     transactionType: 'expense',
-    parentKey: 'apparel',
-    description:
-      'Fashion-forward or seasonal items, accessories, or branded wear.',
+    parentKey: 'education',
+    description: 'Textbooks and study material for courses.',
     order: 1,
   },
   {
-    key: 'shoes',
-    name: 'Shoes',
+    key: 'school-supplies',
+    name: 'School Supplies',
     transactionType: 'expense',
-    parentKey: 'apparel',
-    description: 'Shoes, boots, and footwear for work, sports, or leisure.',
-    order: 2,
-  },
-  // HEALTH
-  {
-    key: 'medical-services',
-    name: 'Medical Services',
-    transactionType: 'expense',
-    parentKey: 'health',
-    description:
-      'Doctor appointments, check-ups, lab tests, or specialist consultations.',
-    order: 0,
-  },
-  {
-    key: 'medicines',
-    name: 'Medicines',
-    transactionType: 'expense',
-    parentKey: 'health',
-    description: 'Prescription drugs, over-the-counter medicine, vitamins.',
-    order: 1,
-  },
-  {
-    key: 'health-general',
-    name: 'Health (General)',
-    transactionType: 'expense',
-    parentKey: 'health',
-    description:
-      'General health-related spending that doesn’t fit other health subcategories.',
+    parentKey: 'education',
+    description: 'Notebooks, pens, stationery, and classroom materials.',
     order: 2,
   },
   {
-    key: 'medical-insurance',
-    name: 'Medical Insurance',
+    key: 'tuition',
+    name: 'Tuition',
     transactionType: 'expense',
-    parentKey: 'health',
-    description: 'Health or medical insurance premiums.',
+    parentKey: 'education',
+    description: 'Private tutors and extra lessons outside formal school.',
     order: 3,
+  },
+  {
+    key: 'academy',
+    name: 'Academy',
+    transactionType: 'expense',
+    parentKey: 'education',
+    description: 'Private academies, language schools, music or art lessons.',
+    order: 4,
   },
   // TRANSPORT
   {
@@ -536,131 +781,6 @@ const subCategories = [
     parentKey: 'transport',
     description: 'Taxi rides and local on-demand transport.',
     order: 3,
-  },
-  // CULTURE
-  {
-    key: 'books',
-    name: 'Books',
-    transactionType: 'expense',
-    parentKey: 'culture',
-    description: 'Printed or digital books for leisure or learning.',
-    order: 0,
-  },
-  {
-    key: 'movies',
-    name: 'Movies',
-    transactionType: 'expense',
-    parentKey: 'culture',
-    description: 'Cinema tickets or movie rentals/streaming.',
-    order: 1,
-  },
-  {
-    key: 'music',
-    name: 'Music',
-    transactionType: 'expense',
-    parentKey: 'culture',
-    description: 'Music subscriptions, albums, or instruments.',
-    order: 2,
-  },
-  {
-    key: 'apps',
-    name: 'Apps',
-    transactionType: 'expense',
-    parentKey: 'culture',
-    description: 'Mobile or desktop app purchases and subscriptions.',
-    order: 3,
-  },
-  // SOCIAL LIFE
-  {
-    key: 'friend',
-    name: 'Friend',
-    transactionType: 'expense',
-    parentKey: 'social-life',
-    description: 'Expenses when meeting friends or going out with them.',
-    order: 0,
-  },
-  {
-    key: 'fellowship',
-    name: 'Fellowship',
-    transactionType: 'expense',
-    parentKey: 'social-life',
-    description: 'Small group, community, or church/social circle gatherings.',
-    order: 1,
-  },
-  // BEAUTY
-  {
-    key: 'cosmetics',
-    name: 'Cosmetics',
-    transactionType: 'expense',
-    parentKey: 'beauty',
-    description: 'Makeup, skincare, and personal beauty products.',
-    order: 0,
-  },
-  {
-    key: 'makeup',
-    name: 'Makeup',
-    transactionType: 'expense',
-    parentKey: 'beauty',
-    description: 'Foundations, lipsticks, palettes, and makeup tools.',
-    order: 1,
-  },
-  {
-    key: 'accessories',
-    name: 'Accessories',
-    transactionType: 'expense',
-    parentKey: 'beauty',
-    description: 'Beauty accessories, jewelry, hair accessories.',
-    order: 2,
-  },
-  {
-    key: 'beauty-services',
-    name: 'Beauty Services',
-    transactionType: 'expense',
-    parentKey: 'beauty',
-    description:
-      'Hairdresser, barber, spa, manicure/pedicure, or facial treatments.',
-    order: 3,
-  },
-  // EDUCATION
-  {
-    key: 'schooling',
-    name: 'Schooling',
-    transactionType: 'expense',
-    parentKey: 'education',
-    description: 'Tuition fees for school, college, or other formal education.',
-    order: 0,
-  },
-  {
-    key: 'textbooks',
-    name: 'Textbooks',
-    transactionType: 'expense',
-    parentKey: 'education',
-    description: 'Textbooks and study material for courses.',
-    order: 1,
-  },
-  {
-    key: 'school-supplies',
-    name: 'School Supplies',
-    transactionType: 'expense',
-    parentKey: 'education',
-    description: 'Notebooks, pens, stationery, and classroom materials.',
-    order: 2,
-  },
-  {
-    key: 'tuition',
-    name: 'Tuition',
-    transactionType: 'expense',
-    parentKey: 'education',
-    description: 'Tuition fees for school, college, or other formal education.',
-    order: 3,
-  },
-  {
-    key: 'academy',
-    name: 'Academy',
-    transactionType: 'expense',
-    parentKey: 'education',
-    description: 'Private academies, language schools, music or art lessons.',
-    order: 4,
   },
 ];
 
