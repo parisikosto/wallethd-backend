@@ -56,7 +56,7 @@ const login = asyncHandler(async (req, res, next) => {
  * @access  Public
  */
 const logout = asyncHandler(async (_, res) => {
-  res.cookie(process.env.JTW_COOKIE_NAME, 'invalid', {
+  res.cookie(process.env.JWT_COOKIE_NAME, 'invalid', {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
   });
@@ -139,7 +139,7 @@ const sendTokenResponse = (user, statusCode, res) => {
 
   res
     .status(statusCode)
-    .cookie(process.env.JTW_COOKIE_NAME, token, options)
+    .cookie(process.env.JWT_COOKIE_NAME, token, options)
     .json({
       success: true,
       token,
