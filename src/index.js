@@ -5,7 +5,6 @@ require('dotenv').config();
 require('colors');
 const cors = require('cors');
 const express = require('express');
-const morgan = require('morgan');
 
 // server configuration
 const { port } = require('./config/express');
@@ -29,6 +28,7 @@ app.use(express.json());
 
 // dev logging middleware
 if (process.env.NODE_ENV === 'development') {
+  const morgan = require('morgan');
   app.use(morgan('dev'));
 }
 
