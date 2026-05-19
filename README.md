@@ -18,7 +18,7 @@ Install dependencies
 make install
 ```
 
-Start local development (with docker)
+Start local development
 
 ```
 make start

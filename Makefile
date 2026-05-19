@@ -1,5 +1,5 @@
 install:
-	pnpm install
+	@pnpm install
 
 start:
 	docker compose -f docker-compose.dev.yml up

@@ -1,22 +1,27 @@
 services:
-  dev-api:
+  wallethd-backend-dev-api:
     container_name: wallethd-backend-dev-api
     build:
       context: .
       dockerfile: Dockerfile.dev
     ports:
-      - 5001:5001
+      - ${SERVER_PORT}:${SERVER_PORT}
     environment:
       - FORCE_COLOR=true
     env_file:
       - .env
     volumes:
       - .:/app
+      - /app/node_modules
     depends_on:
-      - dev-mongodb
-  dev-mongodb:
+      wallethd-backend-dev-mongodb:
+        condition: service_healthy
+    networks:
+      - wallethd-backend-dev-network
+
+  wallethd-backend-dev-mongodb:
     container_name: wallethd-backend-dev-mongodb
-    image: mongo:latest
+    image: mongo:8
     restart: unless-stopped
     ports:
       - 27017:27017
@@ -24,10 +29,20 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
     volumes:
-      - dev-mongodb_data:/data/db
-  dev-mongo-express:
+      - wallethd-backend-dev-mongodb_data:/data/db
+    healthcheck:
+      test: ['CMD', 'mongosh', '--eval', "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - wallethd-backend-dev-network
+
+  wallethd-backend-dev-mongo-express:
     container_name: wallethd-backend-dev-mongo-express
-    image: mongo-express:latest
+    image: mongo-express:1
+    restart: unless-stopped
     ports:
       - 8081:8081
     environment:
@@ -35,8 +50,15 @@ services:
       - ME_CONFIG_BASICAUTH_USERNAME=${ME_CONFIG_BASICAUTH_USERNAME}
       - ME_CONFIG_BASICAUTH_PASSWORD=${ME_CONFIG_BASICAUTH_PASSWORD}
     depends_on:
-      - dev-mongodb
+      wallethd-backend-dev-mongodb:
+        condition: service_healthy
+    networks:
+      - wallethd-backend-dev-network
+
+networks:
+  wallethd-backend-dev-network:
+    name: wallethd-backend-dev-network
 
 volumes:
-  dev-mongodb_data:
+  wallethd-backend-dev-mongodb_data:
     name: wallethd-backend-dev-mongodb_data
