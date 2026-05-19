@@ -30,8 +30,7 @@ const authenticate = asyncHandler(async (req, _, next) => {
     }
 
     next();
-  } catch (error) {
-    console.log('error', error.message);
+  } catch {
     return next(new ErrorResponse('Not authorized to access this route', 401));
   }
 });
