@@ -42,26 +42,20 @@ const UserSchema = new mongoose.Schema(
 );
 
 // encrypt password using bcrypt
-UserSchema.pre('save', async function (next) {
+UserSchema.pre('save', async function () {
   if (!this.isModified('password')) {
-    return next();
+    return;
   }
 
-  try {
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
-    next();
-  } catch (error) {
-    next(error);
-  }
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
 });
 
 // lowercase usernames
-UserSchema.pre('save', function (next) {
+UserSchema.pre('save', function () {
   if (this.isModified('username')) {
     this.username = this.username.toLowerCase();
   }
-  next();
 });
 
 // sign JWT and return
