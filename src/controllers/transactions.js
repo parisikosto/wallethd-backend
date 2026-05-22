@@ -313,6 +313,32 @@ const getTransactionsSummary = asyncHandler(async (req, res, next) => {
   });
 });
 
+/**
+ * @desc    Get distinct years that have transactions for the user
+ * @route   GET /v1/transactions/years
+ * @access  Private
+ */
+const getTransactionsYears = asyncHandler(async (req, res) => {
+  const results = await Transaction.aggregate([
+    {
+      $match: {
+        user: mongoose.Types.ObjectId.createFromHexString(req.user.id),
+      },
+    },
+    {
+      $group: {
+        _id: { $year: '$date' },
+      },
+    },
+    { $sort: { _id: -1 } },
+  ]);
+
+  res.status(200).json({
+    success: true,
+    data: results.map(({ _id }) => _id),
+  });
+});
+
 module.exports = {
   getTransactions,
   getSingleTransaction,
@@ -321,4 +347,5 @@ module.exports = {
   deleteTransaction,
   getTransactionsByMonth,
   getTransactionsSummary,
+  getTransactionsYears,
 };

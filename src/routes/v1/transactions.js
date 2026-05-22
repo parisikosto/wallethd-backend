@@ -8,6 +8,7 @@ const {
   deleteTransaction,
   getTransactionsByMonth,
   getTransactionsSummary,
+  getTransactionsYears,
 } = require('../../controllers/transactions');
 const { privateAdvancedResults } = require('../../middleware/advancedResults');
 const { authenticate } = require('../../middleware/auth');
@@ -28,6 +29,8 @@ router
 router.route('/monthly').get(getTransactionsByMonth);
 
 router.route('/summary').get(getTransactionsSummary);
+
+router.route('/years').get(getTransactionsYears);
 
 router.route('/:id').get(getSingleTransaction).put(updateTransaction);
 
