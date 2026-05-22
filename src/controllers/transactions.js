@@ -170,7 +170,7 @@ const getTransactionsByMonth = asyncHandler(async (req, res, next) => {
 
   const transactions = await Transaction.find(matchStage)
     .populate(Transaction.getPopulateOptions())
-    .sort({ date: 1 });
+    .sort({ date: 1, note: 1 });
 
   const monthlyData = Array.from({ length: 12 }, () => ({
     expenses: [],
@@ -196,12 +196,16 @@ const getTransactionsByMonth = asyncHandler(async (req, res, next) => {
   });
 
   monthlyData.forEach((monthData) => {
-    monthData.incomes.sort(
-      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
-    );
-    monthData.expenses.sort(
-      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
-    );
+    const sortByDateThenNote = (a, b) => {
+      const dateDiff = new Date(a.date).getTime() - new Date(b.date).getTime();
+      if (dateDiff !== 0) {
+        return dateDiff;
+      }
+      return a.note.localeCompare(b.note);
+    };
+
+    monthData.incomes.sort(sortByDateThenNote);
+    monthData.expenses.sort(sortByDateThenNote);
 
     const totalIncome = monthData.incomes.reduce(
       (sum, t) => sum + t.amountDecimal,
